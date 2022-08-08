@@ -1,0 +1,90 @@
+$white: #FFFFFF;
+$black: #000000;
+$red: #CE4B4B;
+$gray: #3a3a3a;
+$light-gray: #8E8E8E;
+
+main {
+    .filters {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto 40px;
+        padding: 0 16px;
+        background-color: #0c0c0c;
+        border-radius: 5px;
+        &__button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 150px;
+            padding: 16px 10px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: $black;
+            color: $white;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .dropdown-menu {
+            position: relative;
+        }
+        .dropdown-menu:hover .dropdown-content {display: block;}
+        .dropdown-menu:hover .filters__button {color: $red}
+        .dropdown-menu:hover .filters__button svg g {fill: $red}
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 90px;
+            min-width: 150px;
+            padding: 10px;
+            background-color: $black;
+            border-radius: 5px;
+            line-height: 1.7em;
+            z-index: 1;
+            .dropdown-item {
+                list-style: none;
+                cursor: pointer;
+                a {
+                    text-decoration: none;
+                    color: $white;
+                }
+            }
+            .dropdown-item:hover {
+                a {
+                    color: $red;
+                }
+            }
+        }
+        .genre-dropdown, .country-dropdown {
+            width: 400px;
+            .dropdown-item {
+                display: block;
+                float: left;
+                width: 49%;
+            }
+        }
+        .country-dropdown {
+            right: calc(100% - 270px);
+        }
+        .rating-dropdown {
+            right: 0;
+        }
+        .year-dropdown {
+            right: -10px;
+        }
+
+    }
+
+    .films-list, .serials-list{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 0 -20px;
+        .film_margin-bottom, .serial_margin-bottom {
+            margin-bottom: 40px;
+        }
+    }
+}
