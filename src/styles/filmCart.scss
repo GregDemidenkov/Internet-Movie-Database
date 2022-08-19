@@ -6,6 +6,7 @@ $light-gray: #8E8E8E;
 
 main {
     margin: 150px 0 50px;
+    min-height: 700px;
     .come-back {
         display: flex;
         align-items: center;
@@ -46,6 +47,7 @@ main {
             .name {
                 &__ru {
                     font-size: 48px;
+                    height: auto;
                 }
                 &__en {
                     margin-top: 10px;
@@ -63,10 +65,15 @@ main {
             .about-film {
                 text-align: left;
                 table {
-                    font-size: 24px;
+                    font-size: 20px;
+                    .parametr {
+                        width: 20%;
+                        padding: 8px 0;
+                        vertical-align: top;
+                    }
                     .value {
                         color: $light-gray;
-                        padding-left: 40px;
+                        padding: 8px 40px;
                     }
                 }
             }
@@ -99,12 +106,6 @@ main {
             border-radius: 28px;
             p {
                 color: $white;
-            }
-            &_trailer {
-                img {
-                    margin: 0 10px 0 33px;
-                    transform: rotate(180deg);
-                }
             }
             &_watch {
                 img {

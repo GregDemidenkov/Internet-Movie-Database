@@ -17,8 +17,10 @@ $light-gray: #8E8E8E;
     padding-right: 16px;
 }
 
+
 body {
     background-color: $black;
+    position: relative;
 }
 
 header {
@@ -52,6 +54,7 @@ header {
 }
 
 main {
+    min-height: 1000px;
     .main-screen {
         background-image: url("../img/background.jpg");
         background-repeat: repeat;
@@ -107,11 +110,14 @@ main {
         &-films, &-serials {
             margin: 0 -20px;
             overflow: hidden;
+            .film__poster {
+                height: 330px;
+            }
             .slick-prev {
                 position: absolute;
                 top: calc(50% - 40px);
                 left: calc(0% + 20px);
-                z-index: 111;
+                z-index: 2;
             } 
             .slick-prev::before, .slick-next::before {
                 font-size: 40px;
@@ -120,7 +126,7 @@ main {
                 position: absolute;
                 top: calc(50% - 40px);
                 right: calc(0% + 20px);
-                z-index: 111;
+                z-index: 2;
             }
         }
     }
@@ -128,6 +134,8 @@ main {
 }
 
 .film, .serial {
+    height: 330px;
+    position: relative;
     &_item {
         position: relative;
         margin: 0 20px;
@@ -135,25 +143,38 @@ main {
     }
     &__poster {
         width: 220px;
-        height: 330px;
+        height: 100%;
     }
     &__name {
+        padding-top: auto;
         color: $white;
+        width: 220px;
     }
-    &__age{
+    &__rating {
         position: absolute;
-        top: 5px;
-        left: 5px;
-        background-color: #ffffffa2;
-        border-radius: 3px;
-        color: $black;
+        top: 35px;
+        left: -10px;
+        background-color: #000000b2;
+        border-radius: 100%;
+        color: $white;
+        font-size: 16px;
+        padding: 6px 6px 7px;
+    }
+    .rating_red {
+        border: 2px solid red;
+    }
+    .rating_yellow {
+        border: 2px solid yellow;
+    }
+    .rating_green {
+        border: 2px solid green;
     }
 
 }
 
 footer {
     position: absolute;
-    bottom: 0;
+    bottom: -174px;
     width: 100%;
     background-color: $gray;
     padding: 25px 0;

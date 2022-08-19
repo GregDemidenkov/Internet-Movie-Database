@@ -79,12 +79,21 @@ main {
 
     .films-list, .serials-list{
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
         align-items: center;
         flex-wrap: wrap;
-        margin: 0 -20px;
-        .film_margin-bottom, .serial_margin-bottom {
-            margin-bottom: 40px;
+        .film, .serial {
+            padding-right: 6px;
+            &__rating {
+                top: 5px;
+                left: 5px;
+            }
+            &__name {
+                width: 220px;
+            }
+            &_margin-bottom, &_margin-bottom {
+                margin-bottom: 150px;
+            }
         }
     }
 }
