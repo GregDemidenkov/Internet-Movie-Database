@@ -21,7 +21,7 @@ const FilmPage = () => {
         fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
             method: 'GET',
             headers: {
-                'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
+                'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
                 'Content-Type': 'application/json',
             },
         })
@@ -32,6 +32,12 @@ const FilmPage = () => {
         })
 
     }, [])
+
+    const formatTime = (filmLength) => {
+        let hours = Math.trunc(filmLength/60);
+        let minutes = filmLength % 60;
+        return hours + ':' + (minutes < 10 ? minutes.toString() + '0' : minutes);
+    }
 
     console.log(filmCart);
 
@@ -89,7 +95,7 @@ const FilmPage = () => {
                                         </tr>
                                         <tr>
                                             <th className = "parametr">Время</th>
-                                            <th className = "value">{filmCart.filmLength} мин./ 02:16</th>
+                                            <th className = "value">{filmCart.filmLength} мин. / {formatTime(filmCart.filmLength)}</th>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -5,40 +5,6 @@ import {FilmCart} from '../components'
 
 const Main = () => {
     
-    const [topFilms, setTopFilms] = useState([]);
-    const [topSerials, setTopSerials] = useState([]);
-    const [fetching, setFetching] = useState(false)
-
-    let arr = [];
-    useEffect(() => {
-        const arrApi = [
-            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=RATING&type=FILM&yearFrom=2021&yearTo=2021&page=2', {
-                method: 'GET',
-                headers: {
-                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                    'Content-Type': 'application/json',
-                },
-            }),
-            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=RATING&type=TV_SERIES&yearFrom=2021&yearTo=2021&page=2', {
-                method: 'GET',
-                headers: {
-                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                    'Content-Type': 'application/json',
-                },
-            }),
-        ]
-        Promise.all(arrApi)
-        .then(allResponse => {
-            allResponse[0].json().then(json => setTopFilms(json.items.slice(0,10)))
-            allResponse[1].json().then(json => setTopSerials(json.items.slice(0,10)))
-            setFetching(true)
-        })
-
-    }, [])
-    
-    console.log(topFilms);
-    console.log(topSerials);
-
     const sliderSetting = {
         infinite: false,
         speed: 220,
@@ -83,7 +49,36 @@ const Main = () => {
             }
         ]
     }
+    
+    const [topFilms, setTopFilms] = useState([]);
+    const [topSerials, setTopSerials] = useState([]);
+    const [fetching, setFetching] = useState(false)
 
+    useEffect(() => {
+        const arrApi = [
+            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=RATING&type=FILM&yearFrom=2021&yearTo=2021&page=2', {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
+                    'Content-Type': 'application/json',
+                },
+            }),
+            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=RATING&type=TV_SERIES&yearFrom=2021&yearTo=2021&page=2', {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
+                    'Content-Type': 'application/json',
+                },
+            }),
+        ]
+        Promise.all(arrApi)
+        .then(allResponse => {
+            allResponse[0].json().then(json => setTopFilms(json.items.slice(0,10)))
+            allResponse[1].json().then(json => setTopSerials(json.items.slice(0,10)))
+            setFetching(true)
+        })
+
+    }, [])
 
 
     return(

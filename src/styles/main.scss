@@ -23,6 +23,7 @@ body {
     position: relative;
 }
 
+
 header {
     position: fixed;
     top: 0;
@@ -54,7 +55,7 @@ header {
 }
 
 main {
-    min-height: 1000px;
+    min-height: calc(100vh + 350px);
     .main-screen {
         background-image: url("../img/background.jpg");
         background-repeat: repeat;
@@ -173,8 +174,8 @@ main {
 }
 
 footer {
-    position: absolute;
-    bottom: -174px;
+    // position: absolute;
+    // bottom: -174px;
     width: 100%;
     background-color: $gray;
     padding: 25px 0;
