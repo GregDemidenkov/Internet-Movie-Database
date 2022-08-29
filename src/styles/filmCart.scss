@@ -5,12 +5,11 @@ $gray: #3a3a3a;
 $light-gray: #8E8E8E;
 
 main {
-    margin: 150px 0 50px;
-    min-height: 100vh;
     .come-back {
         display: flex;
         align-items: center;
         text-decoration: none;
+        width: 100px;
         p {
             color: $light-gray;
             font-size: 26px;

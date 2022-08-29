@@ -4,12 +4,13 @@ import { NavLink } from 'react-router-dom'
 import logo from "../img/logo.svg"
 
 const Header = () => {
+
     return(
         <>
             <header>
                 <div className = "main-container">
                     <div className = "header-content">
-                        <NavLink to = "/">
+                        <NavLink  to = "/">
                             <img src = {logo} alt=""></img>
                         </NavLink>
                         <nav>

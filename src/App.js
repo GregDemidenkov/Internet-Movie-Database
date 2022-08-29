@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom'
+import { Provider } from "react-redux";
 
 import {Main, Films, Serials, FilmPage} from './pages'
 import {Layout} from './components'

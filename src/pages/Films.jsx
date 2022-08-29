@@ -1,17 +1,13 @@
 import React,  {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 
-
 import arrComeBack from '../img/come-back.svg'
 import deleteButton from "../img/delete.svg"
 
 import {FilmCart, Filters, FilmLoading} from '../components'
 
-
-
-
 function Films() {
-    
+
     const [films, setFilms] = useState([]);
     const [fetching, setFetching] = useState(false)
     const [updating, setUpdating] = useState(0)
@@ -31,21 +27,21 @@ function Films() {
             fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=1', {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
+                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
                     'Content-Type': 'application/json',
                 },
             }),
             fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=2', {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
+                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
                     'Content-Type': 'application/json',
                 },
             }),
             fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=3', {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
+                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
                     'Content-Type': 'application/json',
                 },
             }),
@@ -60,6 +56,7 @@ function Films() {
             })
             setFilms([...films, ...temporaryArr])
             setFetching(true)
+            console.log("done");
         })
 
     }, [])
@@ -288,83 +285,3 @@ function Films() {
 
 export default Films;
 
-
-
-
-// fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=2', {
-            //     method: 'GET',
-            //     headers: {
-            //         'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-            //         'Content-Type': 'application/json',
-            //     },
-            // }),
-            // fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=3', {
-            //     method: 'GET',
-            //     headers: {
-            //         'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-            //         'Content-Type': 'application/json',
-            //     },
-            // }),
-            // fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=4', {
-            //     method: 'GET',
-            //     headers: {
-            //         'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-            //         'Content-Type': 'application/json',
-            //     },
-            // }),
-            // fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=5', {
-            //     method: 'GET',
-            //     headers: {
-            //         'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-            //         'Content-Type': 'application/json',
-            //     },
-            // }),
-            // fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=6', {
-            //     method: 'GET',
-            //     headers: {
-            //         'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-            //         'Content-Type': 'application/json',
-            //     },
-            // }),
-            // fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=7', {
-            //     method: 'GET',
-            //     headers: {
-            //         'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-            //         'Content-Type': 'application/json',
-            //     },
-            // }),
-            // fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=8', {
-            //     method: 'GET',
-            //     headers: {
-            //         'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-            //         'Content-Type': 'application/json',
-            //     },
-            // }),
-            // fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=9', {
-            //     method: 'GET',
-            //     headers: {
-            //         'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-            //         'Content-Type': 'application/json',
-            //     },
-            // }),
-            // fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=10', {
-            //     method: 'GET',
-            //     headers: {
-            //         'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-            //         'Content-Type': 'application/json',
-            //     },
-            // }),
-            // fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=11', {
-            //     method: 'GET',
-            //     headers: {
-            //         'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-            //         'Content-Type': 'application/json',
-            //     },
-            // }),
-            // fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=12', {
-            //     method: 'GET',
-            //     headers: {
-            //         'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-            //         'Content-Type': 'application/json',
-            //     },
-            // })

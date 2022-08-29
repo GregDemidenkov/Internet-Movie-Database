@@ -27,7 +27,21 @@ function Serials() {
             fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=TV_SERIES&page=1', {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
+                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
+                    'Content-Type': 'application/json',
+                },
+            }),
+            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=TV_SERIES&page=2', {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
+                    'Content-Type': 'application/json',
+                },
+            }),
+            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=TV_SERIES&page=3', {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
                     'Content-Type': 'application/json',
                 },
             }),
