@@ -1,0 +1,143 @@
+$white: #FFFFFF;
+$black: #000000;
+$red: #CE4B4B;
+$gray: #3a3a3a;
+$light-gray: #8E8E8E;
+
+main {
+    .active-filter-list {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 80%;
+        margin: 0 auto 10px;
+        .filter-item {
+            width: 150px;
+            margin: 0 40px 20px 0;
+            padding: 15px 20px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: $gray;
+            p {
+                color: $black;
+                font-size: 16px;
+            }
+            img {
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+        }
+    }
+    .filters {
+        width: 80%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 0 auto 40px;
+        padding: 0 16px;
+        background-color: #0c0c0c;
+        border-radius: 5px;
+        &__button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 150px;
+            padding: 16px 10px;
+            margin: 20px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: $black;
+            color: $white;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .dropdown-menu {
+            position: relative;
+        }
+        .dropdown-menu:hover .dropdown-content {display: block;}
+        .dropdown-menu:hover .filters__button {color: $red}
+        .dropdown-menu:hover .filters__button svg g {fill: $red}
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 90px;
+            min-width: 150px;
+            padding: 10px;
+            background-color: $black;
+            border-radius: 5px;
+            line-height: 1.7em;
+            z-index: 1;
+            .dropdown-item {
+                list-style: none;
+                cursor: pointer;
+                a {
+                    text-decoration: none;
+                    color: $white;
+                }
+            }
+            .dropdown-item:hover {
+                a {
+                    color: $red;
+                }
+            }
+        }
+        .genre-dropdown, .country-dropdown {
+            width: 400px;
+            .dropdown-item {
+                display: block;
+                float: left;
+                width: 49%;
+            }
+        }
+        .country-dropdown {
+            right: calc(100% - 270px);
+        }
+
+        .rating-dropdown {
+            right: 0;
+        }
+        .year-dropdown {
+            right: -10px;
+        }
+        
+        @media(max-width: 882px) {
+            .genre-dropdown, .country-dropdown {
+                width: 150px;
+                right: 0;
+                .dropdown-item {
+                    display: block;
+                    float: left;
+                    width: 100%;
+                }
+            }
+            .year-dropdown {
+                right: 0;
+            }
+
+        }
+
+    }
+
+    .films-list, .serials-list{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        .film, .serial {
+            padding-right: 6px;
+            &__rating {
+                top: 5px;
+                left: 5px;
+            }
+            &__name {
+                width: 220px;
+            }
+            &_margin-bottom, &_margin-bottom {
+                margin-bottom: 150px;
+            }
+        }
+    }
+}
