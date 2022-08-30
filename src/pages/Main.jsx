@@ -1,4 +1,5 @@
 import React,  {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom'
 import Slider from "react-slick";
 
 import {FilmCart} from '../components'
@@ -89,7 +90,9 @@ const Main = () => {
                         <div className="info">
                             <h1><strong>ReFilms</strong> &mdash; лучший онлайн кинотеатр страны</h1>
                             <h2>Оформите подписку за <span>299р</span> и получите доступ<br /> ко всем фильмам и сериалам</h2>
-                            <a href="">Оформить подписку</a>
+                            <Link className = "button-to-form-page" to = "/formPage" >
+                                <p>Оформить подписку</p>
+                            </Link>
                         </div>
                     </div>
                 </div>

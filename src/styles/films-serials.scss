@@ -1,8 +1,4 @@
-$white: #FFFFFF;
-$black: #000000;
-$red: #CE4B4B;
-$gray: #3a3a3a;
-$light-gray: #8E8E8E;
+@import "constants.scss";
 
 main {
     .active-filter-list {
@@ -38,7 +34,7 @@ main {
         flex-wrap: wrap;
         margin: 0 auto 40px;
         padding: 0 16px;
-        background-color: #0c0c0c;
+        background-color: $dark-gray;
         border-radius: 5px;
         &__button {
             display: flex;

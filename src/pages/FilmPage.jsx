@@ -56,7 +56,7 @@ const FilmPage = () => {
                         </div>
                         <div className = "film-cart__info">
                             <div className = "name">
-                                <h1 className = "name__ru">{filmCart.nameRu} ({filmCart.year})</h1>
+                                <h1 className = "name__ru">{filmCart.nameRu} ({filmCart.serial ? filmCart.year + "-" + filmCart.endYear : filmCart.year})</h1>
                                 <p className = "name__en">{filmCart.nameOriginal} <span>{fetching && filmCart.ratingAgeLimits != null && filmCart.ratingAgeLimits.slice(3)}+</span></p>
                             </div>
                             <div className = "about-film">
@@ -93,25 +93,29 @@ const FilmPage = () => {
                                             <th className = "parametr">Слоган</th>
                                             <th className = "value">"{filmCart.slogan}"</th>
                                         </tr>
-                                        <tr>
-                                            <th className = "parametr">Время</th>
-                                            <th className = "value">{filmCart.filmLength} мин. / {formatTime(filmCart.filmLength)}</th>
-                                        </tr>
+                                        {
+                                            !filmCart.serial ?
+                                            <tr>
+                                                <th className = "parametr">Время</th>
+                                                <th className = "value">{filmCart.filmLength} мин. / {formatTime(filmCart.filmLength)}</th>
+                                            </tr>
+                                            : <></>
+                                        }
                                     </tbody>
                                 </table>
                             </div>
-                            <div className = "synopsis">
-                                <h2>Синопсис:</h2>
-                                <p>{filmCart.description || filmCart.shortDescription}</p>
-                            </div>
-                            <div className = "raiting-and-watch">
-                                <h2>Оценка: <span>{filmCart.ratingKinopoisk}/10</span></h2>
-                                <a className = "button button_watch" href = {filmCart.webUrl} target="_blank">
-                                    <p>Смотреть</p>
-                                    <img src = {watch} alt = "" />
-                                </a>
-                            </div>
                         </div>
+                    </div>
+                    <div className = "synopsis">
+                        <h2>Синопсис:</h2>
+                        <p>{filmCart.description || filmCart.shortDescription}</p>
+                    </div>
+                    <div className = "raiting-and-watch">
+                        <h2>Оценка: <span>{filmCart.ratingKinopoisk}/10</span></h2>
+                        <a className = "button button_watch" href = {filmCart.webUrl} target="_blank">
+                            <p>Смотреть</p>
+                            <img src = {watch} alt = "" />
+                        </a>
                     </div>
                 </div>
             </main>

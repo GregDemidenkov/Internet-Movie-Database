@@ -1,8 +1,4 @@
-$white: #FFFFFF;
-$black: #000000;
-$red: #CE4B4B;
-$gray: #3a3a3a;
-$light-gray: #8E8E8E;
+@import "constants.scss";
 
 main {
     .come-back {
@@ -21,6 +17,7 @@ main {
         font-size: 36px;
         color: $white;
     }
+
     .film-cart {
         display: flex;
         &__poster {
@@ -28,7 +25,7 @@ main {
             flex-direction: column;
             align-items: center;
             .poster_img {
-                width: 400px;
+                width: 350px;
                 height: auto;
                 margin-bottom: 20px;
             }
@@ -38,12 +35,9 @@ main {
             margin-left: 40px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            h2 {
-                font-size: 36px;
-                margin-bottom: 20px;
-            }
+            justify-content: flex-start;
             .name {
+                margin-bottom: 40px;
                 &__ru {
                     font-size: 48px;
                     height: auto;
@@ -76,42 +70,91 @@ main {
                     }
                 }
             }
-            .synopsis {
-                p {
-                    font-size: 20px;
-                    color: $light-gray;
-                }
-            }
-            .raiting-and-watch {
-                display: flex;
-                justify-content: space-between;
-                h2 {
-                    margin: 0;
-                    padding-top: 10px;
-                    span {
-                        color: $red;
-                    }
+        }
+    
+    @media(max-width: 1150px) {
+        flex-direction: column;
+        &__info {
+            margin-left: 0;
+            .name {
+                text-align: center;
+                &__en {
+                    justify-content: center;
                 }
             }
         }
-        .button {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            text-align: center;
-            width: 168px;
-            height: 56px;
-            background-color: $red;
-            border-radius: 28px;
-            p {
-                color: $white;
+    }
+
+    }
+    .synopsis {
+        margin-top: 40px;
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: $white;
+        }
+        p {
+            font-size: 20px;
+            color: $light-gray;
+        }
+    }
+    .raiting-and-watch {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 40px;
+        h2 {
+            margin: 0;
+            padding-top: 5px;
+            margin-right: 15px;
+            font-size: 36px;
+            color: $white;
+            span {
+                color: $red;
             }
-            &_watch {
-                img {
-                    margin: 0 0 0 10px;
+        }
+    }
+    .button {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        text-align: center;
+        width: 168px;
+        height: 56px;
+        background-color: $red;
+        border-radius: 28px;
+        p {
+            color: $white;
+        }
+        &_watch {
+            img {
+                margin: 0 0 0 10px;
+            }
+            p {
+                margin-left: 30px;
+            }
+        }
+    }
+
+    @media(max-width: 480px) {
+        .raiting-and-watch {
+            flex-direction: column;
+            align-items: center;
+        }
+        .button {
+            margin-top: 20px;
+        }
+    }
+
+    @media(max-width: 400px) {
+        .film-cart {
+            &__poster {
+                .poster_img {
+                    width: 80%;
                 }
-                p {
-                    margin-left: 30px;
+            }
+            .about-film {
+                table {
+                    font-size: 14px;
                 }
             }
         }

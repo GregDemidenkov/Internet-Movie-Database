@@ -1,0 +1,127 @@
+@import "constants.scss";
+
+form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    height: 750px;
+    background-color: $gray;
+    margin: 100px auto 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgb(41, 41, 41);
+
+    h3 {
+        color: $dark-gray;
+        text-align: center;
+        margin: 0;
+        span {
+            color: $red;
+        }
+    }
+
+    .main-info, .card-info {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        font-size: 18px;
+        p {
+            flex-basis: 40%;
+            margin-bottom: 10px;
+            line-height: 35px;
+        }
+        p:nth-child(4) input::placeholder {
+            font-size: 15px;
+        }
+    }
+
+    .card-info {
+        p {
+            flex-basis: 30%;
+        }
+        p:nth-child(1) {
+            flex-basis: 80%;
+        }
+    }
+
+    input {
+        width: 100%;
+        padding: 15px 10px;
+        margin-left: -10px;
+        border: 0;
+        border-radius: 5px;
+        outline: none;
+        background-color: $light-gray;
+    }
+
+    button {
+        text-decoration: none;
+        border: none;
+        width: 40%;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: $red;
+        color: $white;
+        cursor: pointer;
+    }
+
+    .info {
+        text-align: center;
+        color: $light-gray;
+        span {
+            color: $dark-gray;
+        }
+    }
+
+    @media(max-width: 920px) {
+        h3 {
+            font-size: 20px;
+        }
+        .main-info, .card-info {
+            font-size: 14px;
+            p input::placeholder {
+                font-size: 14px;
+            }
+            p:nth-child(4) input::placeholder {
+                font-size: 12px;
+            }
+        }
+        button {
+            font-size: 14px;
+        }
+        .info {
+            font-size: 14px;
+        }
+    }
+
+    @media(max-width: 740px) {
+        height: 900px;
+        width: 75%;
+        h3 {
+            font-size: 20px;
+        }
+        .main-info, .card-info {
+            font-size: 14px;
+            p {
+                flex-basis: 80%;
+            }
+            p input::placeholder {
+                font-size: 14px;
+            }
+            p:nth-child(4) input::placeholder {
+                font-size: 12px;
+            }
+        }
+        button {
+            font-size: 14px;
+            width: 50%;
+        }
+        .info {
+            font-size: 14px;
+        }
+    }
+
+}

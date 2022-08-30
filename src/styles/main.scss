@@ -1,9 +1,4 @@
-$white: #FFFFFF;
-$black: #000000;
-$red: #CE4B4B;
-$gray: #3a3a3a;
-$light-gray: #8E8E8E;
-
+@import "constants.scss";
 
 * {
     margin: 0;
@@ -123,7 +118,7 @@ main {
                     color: $red;
                 }
             }
-            a {
+            .button-to-form-page {
                 text-decoration: none;
                 padding: 20px 40px;
                 border-radius: 30px;
