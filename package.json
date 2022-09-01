@@ -16,7 +16,8 @@
     "react-slick": "^0.29.0",
     "react-text-mask": "^5.4.3",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "ws": "^8.8.1"
   },
   "scripts": {
     "start": "react-scripts start",

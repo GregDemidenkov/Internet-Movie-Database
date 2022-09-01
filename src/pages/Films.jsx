@@ -16,49 +16,55 @@ function Films() {
     const [curentCountry, setСurentCountry] = useState("")
     const [curentYear, setСurentYear] = useState("")
 
-    let temporaryArr = [];
-
     const navigate = useNavigate()
 
     const goBack = () => navigate(-1)
 
-    useEffect(() => {
-        const arrApi = [
-            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=1', {
-                method: 'GET',
-                headers: {
-                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                    'Content-Type': 'application/json',
-                },
-            }),
-            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=2', {
-                method: 'GET',
-                headers: {
-                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                    'Content-Type': 'application/json',
-                },
-            }),
-            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=3', {
-                method: 'GET',
-                headers: {
-                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                    'Content-Type': 'application/json',
-                },
-            }),
-        ]
-        Promise.all(arrApi)
-        .then(allResponse => {
-            allResponse.forEach(res => {
-                res.json().then(json => temporaryArr = [...temporaryArr, ...json.items]);
-            })
-            temporaryArr.forEach(obj => {
-                obj.status = "active"
-            })
-            setFilms([...films, ...temporaryArr])
+    const init = async () => {
+        try {
+            setFetching(false)
+            const arrApi = [
+                fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=1', {
+                    method: 'GET',
+                    headers: {
+                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
+                        'Content-Type': 'application/json',
+                    },
+                }),
+                fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=2', {
+                    method: 'GET',
+                    headers: {
+                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
+                        'Content-Type': 'application/json',
+                    },
+                }),
+                fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=3', {
+                    method: 'GET',
+                    headers: {
+                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
+                        'Content-Type': 'application/json',
+                    },
+                }),
+            ]
+            const arrResponces = await Promise.allSettled(arrApi)
+            const arrRequestJson = arrResponces
+                .filter(response => response.status === "fulfilled")
+                .map(response =>  response.value.json())
+            const arrResponseJson = await Promise.all(arrRequestJson)
+            const arrItems = arrResponseJson
+                .map(response => response.items)
+                .flat()
+                .map(item => ({ ...item, status: "active" }))
+            setFilms([...films, ...arrItems])
+        } catch (e) {
+            console.log("init: ", e)
+        } finally {
             setFetching(true)
-            console.log("done");
-        })
+        }
+    }
 
+    useEffect(() => {
+        init()
     }, [])
 
     console.log(films);
