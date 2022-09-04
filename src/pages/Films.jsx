@@ -293,7 +293,7 @@ function Films({page}) {
                             />
 
                         )
-                        : Array(20).fill(0).map((_, index) => <FilmLoading key = {index}/>)
+                        : Array(60).fill(0).map((_, index) => <FilmLoading key = {index}/>)
                     }
                 </div>
             </div>

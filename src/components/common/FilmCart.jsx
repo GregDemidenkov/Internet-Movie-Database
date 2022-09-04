@@ -19,7 +19,7 @@ const FilmCart = ({poster, name, rating, id, countries, genres, year, active}) =
     
     return(
         
-        <Link className = "film film_item film_margin-bottom" to = {`/filmPage/${id}`} id = {id}>
+        <Link href = "#top" className = "film film_item film_margin-bottom" to = {`/filmPage/${id}`} id = {id}>
             <div className = "film__poster">
                 <img src={poster} alt="" />
                 {

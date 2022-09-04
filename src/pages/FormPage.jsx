@@ -13,7 +13,7 @@ const FormPage = () => {
 
     return (
         <main>
-            <div className="main-container">
+            <div name = "top" className="main-container">
                 <a onClick = {goBack} className = "come-back" href="#">
                     <img src = {arrComeBack} alt="" />
                     <p>Назад</p>
