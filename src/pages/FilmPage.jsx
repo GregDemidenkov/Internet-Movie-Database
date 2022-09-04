@@ -21,7 +21,7 @@ const FilmPage = () => {
             const api = fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
+                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
                     'Content-Type': 'application/json',
                 }
             })
@@ -50,7 +50,7 @@ const FilmPage = () => {
     return (
         <>
             <main>
-                <div className = "main-container">
+                <div name = "top" className = "main-container">
                     <a onClick = {goBack} className = "come-back" href = "#">
                         <img src = {arrComeBack} alt="" />
                         <p>Назад</p>
