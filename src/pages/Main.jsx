@@ -2,7 +2,7 @@ import React,  {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import Slider from "react-slick";
 
-import {FilmCart} from '../components'
+import {FilmCart, FilmLoading} from '../components'
 
 const Main = () => {
     
@@ -55,32 +55,42 @@ const Main = () => {
     const [topSerials, setTopSerials] = useState([]);
     const [fetching, setFetching] = useState(false)
 
-    useEffect(() => {
-        const arrApi = [
-            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=RATING&type=FILM&yearFrom=2021&yearTo=2021&page=2', {
-                method: 'GET',
-                headers: {
-                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                    'Content-Type': 'application/json',
-                },
-            }),
-            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=RATING&type=TV_SERIES&yearFrom=2021&yearTo=2021&page=2', {
-                method: 'GET',
-                headers: {
-                    'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                    'Content-Type': 'application/json',
-                },
-            }),
-        ]
-        Promise.all(arrApi)
-        .then(allResponse => {
-            allResponse[0].json().then(json => setTopFilms(json.items.slice(0,10)))
-            allResponse[1].json().then(json => setTopSerials(json.items.slice(0,10)))
+    const init = async () => {
+        try {
+            setFetching(false)
+            const arrApi = [
+                fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=RATING&type=FILM&yearFrom=2021&yearTo=2021&page=2', {
+                    method: 'GET',
+                    headers: {
+                        'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
+                        'Content-Type': 'application/json',
+                    },
+                }),
+                fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=RATING&type=TV_SERIES&yearFrom=2021&yearTo=2021&page=2', {
+                    method: 'GET',
+                    headers: {
+                        'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
+                        'Content-Type': 'application/json',
+                    },
+                }),
+            ]
+            const arrResponces = await Promise.allSettled(arrApi)
+            const arrRequestJson = arrResponces
+                .filter(response => response.status === "fulfilled")
+                .map(response =>  response.value.json())
+            const arrResponseJson = await Promise.all(arrRequestJson)
+            setTopFilms(arrResponseJson[0].items.slice(0,10))
+            setTopSerials(arrResponseJson[1].items.slice(0,10))
+        } catch (e) {
+            console.log("init: ", e)
+        } finally {
             setFetching(true)
-        })
+        }
+    }
 
+    useEffect(() => {
+        init()
     }, [])
-
 
     return(
         <>
@@ -101,29 +111,39 @@ const Main = () => {
                         <h3>Лучшие фильмы 2021</h3>
                         <Slider {...sliderSetting} className = "best-of-this-year-films">
                             {
-                                fetching &&
-                                topFilms.map((obj) => (
+                                fetching ?
+                                topFilms.map( obj => (
                                     <FilmCart 
                                         key = {obj.kinopoiskId} 
                                         id = {obj.kinopoiskId} 
                                         name = {obj.nameRu} 
                                         poster = {obj.posterUrlPreview} 
-                                        rating = {obj.ratingKinopoisk} />
+                                        rating = {obj.ratingKinopoisk}
+                                        countries = {obj.countries} 
+                                        genres = {obj.genres}
+                                        year = {obj.year}
+                                        active = {false} />
                                 ))
+                                : Array(10).fill(0).map((_, index) => <FilmLoading key = {index}/>)
                             }
                         </Slider>
                         <h3>Лучшие сериалы 2021</h3>
                         <Slider {...sliderSetting} className = "best-of-this-year-serials">
                             {
-                                fetching &&
-                                topSerials.map((obj) => (
+                                fetching ?
+                                topSerials.map( obj => (
                                     <FilmCart 
                                         key = {obj.kinopoiskId} 
                                         id = {obj.kinopoiskId} 
                                         name = {obj.nameRu} 
                                         poster = {obj.posterUrlPreview} 
-                                        rating = {obj.ratingKinopoisk} />
+                                        rating = {obj.ratingKinopoisk}
+                                        countries = {obj.countries} 
+                                        genres = {obj.genres}
+                                        year = {obj.year}
+                                        active = {false} />
                                 ))
+                                : Array(10).fill(0).map((_, index) => <FilmLoading key = {index}/>)
                             }
                         </Slider>
 

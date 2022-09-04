@@ -1,9 +1,10 @@
-export {default as Layout} from "./Layout"
-export {default as Header} from "./Header"
-export {default as Footer} from "./Footer"
-export {default as FilmCart} from "./FilmCart"
-export {default as Filters} from "./Filters"
-export {default as FilmLoading} from "./FilmLoading"
-export {default as BuyForm} from "./BuyForm"
+export {default as Layout} from "./common/Layout"
+export {default as Header} from "./common/Header"
+export {default as Footer} from "./common/Footer"
+export {default as FilmCart} from "./common/FilmCart"
+export {default as Filters} from "./pages/Films/Filters"
+export {default as FilterItem} from "./pages/Films/FilterItem"
+export {default as FilmLoading} from "./pages/Films/FilmLoading"
+export {default as BuyForm} from "./pages/FormPage/BuyForm"
 
 

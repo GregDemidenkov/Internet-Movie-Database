@@ -12,7 +12,7 @@ const FilmLoading = (props) => (
     foregroundColor="#8e8e8e"
     {...props}
   >
-    <rect x="0" y="0" rx="0" ry="0" width="220" height="330" /> 
+    <rect x="0" y="0" rx="5" ry="5" width="220" height="330" /> 
     <rect x="96" y="188" rx="0" ry="0" width="1" height="0" />
   </ContentLoader>
 )

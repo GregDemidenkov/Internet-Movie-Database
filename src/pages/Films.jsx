@@ -2,13 +2,12 @@ import React,  {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import arrComeBack from '../img/come-back.svg'
-import deleteButton from "../img/delete.svg"
 
-import {FilmCart, Filters, FilmLoading} from '../components'
+import {FilmCart, Filters, FilterItem, FilmLoading} from '../components'
 
-function Films() {
+function Films({page}) {
 
-    const [films, setFilms] = useState([]);
+    const [items, setItems] = useState([]);
     const [fetching, setFetching] = useState(false)
     const [updating, setUpdating] = useState(0)
     const [curentRating, setСurentRating] = useState("")
@@ -24,24 +23,24 @@ function Films() {
         try {
             setFetching(false)
             const arrApi = [
-                fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=1', {
+                fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=${page === "films" ? "FILM" : "TV_SERIES"}&page=1`, {
                     method: 'GET',
                     headers: {
-                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
+                        'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
                         'Content-Type': 'application/json',
                     },
                 }),
-                fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=2', {
+                fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=${page === "films" ? "FILM" : "TV_SERIES"}&page=2`, {
                     method: 'GET',
                     headers: {
-                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
+                        'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
                         'Content-Type': 'application/json',
                     },
                 }),
-                fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&page=3', {
+                fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=${page === "films" ? "FILM" : "TV_SERIES"}&page=3`, {
                     method: 'GET',
                     headers: {
-                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
+                        'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
                         'Content-Type': 'application/json',
                     },
                 }),
@@ -55,7 +54,7 @@ function Films() {
                 .map(response => response.items)
                 .flat()
                 .map(item => ({ ...item, status: "active" }))
-            setFilms([...films, ...arrItems])
+            setItems(arrItems)
         } catch (e) {
             console.log("init: ", e)
         } finally {
@@ -65,13 +64,13 @@ function Films() {
 
     useEffect(() => {
         init()
-    }, [])
+    }, [page])
 
-    console.log(films);
+    console.log(items);
 
     const changeStatusByRating = (rating) => {
-        films.forEach(obj => {
-            if (obj.status == "active") {
+        items.forEach(obj => {
+            if (obj.status === "active") {
                 if (obj.ratingKinopoisk < rating) {
                     obj.status = "nonActive"
                 }
@@ -80,8 +79,8 @@ function Films() {
     }
 
     const changeStatusByYear = (leftYaer, rightYaer) => {
-        films.forEach(obj => {
-            if (obj.status == "active") {
+        items.forEach(obj => {
+            if (obj.status === "active") {
                 if (obj.year < leftYaer || obj.year > rightYaer ) {
                     obj.status = "nonActive"
                 }
@@ -114,17 +113,17 @@ function Films() {
         if (genre === "") {
             return 0
         }
-        films.forEach(obj => {
-            if (obj.status== "active") {
+        items.forEach(obj => {
+            if (obj.status === "active") {
                 let flag = false
                 
                 obj.genres.forEach(el => {
-                    if(el.genre == genre.toLowerCase()) {
+                    if(el.genre === genre.toLowerCase()) {
                         flag = true
                     }
                 })
                 
-                if (flag == false) {
+                if (flag === false) {
                     obj.status = "nonActive"
                 }
             }
@@ -135,12 +134,12 @@ function Films() {
         if (country === "") {
             return 0
         }
-        films.forEach(obj => {
-            if (obj.status== "active") {
+        items.forEach(obj => {
+            if (obj.status === "active") {
                 let flag = false
                 
                 obj.countries.forEach(el => {
-                    if(el.country == country) {
+                    if(el.country === country) {
                         flag = true
                     }
                 })
@@ -197,23 +196,23 @@ function Films() {
     
 
     const updateDataByFilter = (info) => {
-        if (info.key == "rating") {
+        if (info.key === "rating") {
             
             setСurentRating(info.value, [setUpdating(1)])
         }
-        if (info.key == "genre") {
+        if (info.key === "genre") {
             setСurentGenre(info.value, [setUpdating(1)])
         }
-        if (info.key == "country") {
+        if (info.key === "country") {
             setСurentCountry(info.value, [setUpdating(1)])
         }
-        if (info.key == "year") {
+        if (info.key === "year") {
             setСurentYear(info.value, [setUpdating(1)])
         }
     }
 
     useEffect(() => {
-        films.forEach(film => {
+        items.forEach(film => {
             film.status = "active"
         })
 
@@ -223,8 +222,8 @@ function Films() {
         filterDict["year"](curentYear)
         
         setUpdating(0)
-        setFilms(films)
-    }, [updating == 1])
+        setItems(items)
+    }, [updating === 1])
 
     
     return (
@@ -234,49 +233,63 @@ function Films() {
                     <img src = {arrComeBack} alt="" />
                     <p>Назад</p>
                 </a>
-                <h3>Фильмы</h3>
+                <h3>
+                    {
+                        page === "films" 
+                        ? "Фильмы" 
+                        : "Сериалы"
+                    }
+                </h3>
                 <div className="active-filter-list">
                     {
                         curentGenre &&
-                        <div className="filter-item">
-                            <p>{curentGenre}</p>
-                            <img onClick = {() => updateDataByFilter({key: "genre", value: ""})} src = {deleteButton} alt="" />
-                        </div>
+                        <FilterItem filter = {curentGenre}
+                                    updateData = {updateDataByFilter}
+                                    key = {"genre"}
+                                    filterKey = {"genre"} 
+                        />
                     }
                     {
                         curentCountry &&
-                        <div className="filter-item">
-                            <p>{curentCountry}</p>
-                            <img onClick = {() => updateDataByFilter({key: "country", value: ""})} src = {deleteButton} alt="" />
-                        </div>
+                        <FilterItem filter = {curentCountry}
+                                    updateData = {updateDataByFilter}
+                                    key = {"country"}
+                                    filterKey = {"country"} 
+                        />
                     }
                     {
                         curentYear &&
-                        <div className="filter-item">
-                            <p>{curentYear}</p>
-                            <img onClick = {() => updateDataByFilter({key: "year", value: ""})} src = {deleteButton} alt="" />
-                        </div>
+                        <FilterItem filter = {curentYear}
+                                    updateData = {updateDataByFilter}
+                                    key = {"year"}
+                                    filterKey = {"year"} 
+                        />
                     }
                     {
                         curentRating &&
-                        <div className="filter-item">
-                            <p>{curentRating}</p>
-                            <img onClick = {() => updateDataByFilter({key: "rating", value: ""})} src = {deleteButton} alt="" />
-                        </div>
+                        <FilterItem filter = {curentRating}
+                                    updateData = {updateDataByFilter}
+                                    key = {"rating"}
+                                    filterKey = {"rating"} 
+                        />
                     }
                 </div>
                 <Filters updateData = {updateDataByFilter} key = "filters_block"/>
                 <div className = "films-list">
                     {
                         fetching ?
-                        films.map( obj => 
+                        items.map( obj => 
                             obj.status == "active" &&
                             <FilmCart 
                                 key = {obj.kinopoiskId} 
                                 id = {obj.kinopoiskId} 
                                 name = {obj.nameRu}
                                 poster = {obj.posterUrlPreview}
-                                rating = {obj.ratingKinopoisk} 
+                                rating = {obj.ratingKinopoisk}
+                                countries = {obj.countries} 
+                                genres = {obj.genres}
+                                year = {obj.year}
+                                active = {true}
                             />
 
                         )

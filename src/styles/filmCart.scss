@@ -57,10 +57,14 @@ main {
             }
             .about-film {
                 text-align: left;
+                h2 {
+                    font-size: 28px;
+                }
                 table {
                     font-size: 20px;
+                    margin-top: 20px;
                     .parametr {
-                        width: 20%;
+                        width: 30%;
                         padding: 8px 0;
                         vertical-align: top;
                     }

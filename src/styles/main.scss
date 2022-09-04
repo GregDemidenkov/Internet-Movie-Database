@@ -150,26 +150,28 @@ main {
             margin: 50px 0;
         }
         &-films, &-serials {
-            margin: 0 -20px;
             overflow: hidden;
             .film__poster {
                 height: 330px;
-                margin: 0;
+                margin: 0 auto;
+            }
+            .slick-list {
+                margin: 0 30px 0 60px;
             }
             .slick-prev {
                 position: absolute;
-                top: calc(50% - 40px);
-                left: calc(0% + 20px);
+                top: calc(50% - 20px);
+                left: 0;
                 z-index: 2;
             } 
-            .slick-prev::before, .slick-next::before {
-                font-size: 40px;
-            }
             .slick-next {
                 position: absolute;
-                top: calc(50% - 40px);
-                right: calc(0% + 20px);
+                top: calc(50% - 20px);
+                right: 18px;
                 z-index: 2;
+            }
+            .slick-prev::before, .slick-next::before {
+                font-size: 40px;
             }
         }
     }
@@ -179,19 +181,51 @@ main {
 .film, .serial {
     height: 330px;
     position: relative;
+    transition: all 0.5s ease;
     &_item {
         position: relative;
         margin: 0 20px;
         text-decoration: none;
     }
     &__poster {
-        width: 220px;
-        height: 100%;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        img {
+            width: 220px;
+            height: 100%;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+        }
+    }
+    .info {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        bottom: 0px;
+        left: -1px;
+        opacity: 0;
+        width: 101%;
+        height: 220px;
+        background-color: $black;
+        overflow: hidden;
+        padding: 0 5px;
+        transition: all 0.5s;
+        p {
+            color: $white;
+            span {
+                font-size: 18px;
+                color: $red;
+                font-weight: 700;
+            }
+        }
     }
     &__name {
-        padding-top: auto;
+        padding-top: 8px;
         color: $white;
         width: 220px;
+        font-size: 18px;
     }
     &__rating {
         position: absolute;
@@ -213,6 +247,17 @@ main {
         border: 2px solid green;
     }
 
+}
+
+.film:hover {
+    transform: scale(1.05);
+    .info {
+        opacity: 0.8;
+    }
+    img {
+        opacity: 0.5;
+        filter: blur(2px);
+    }
 }
 
 @media(max-width: 620px) {

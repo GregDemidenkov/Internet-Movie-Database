@@ -4,8 +4,6 @@ import { useParams, useNavigate } from 'react-router-dom'
 import arrComeBack from '../img/come-back.svg'
 import watch from '../img/watch.svg'
 
-
-
 const FilmPage = () => {
 
     const {id} = useParams();
@@ -17,20 +15,28 @@ const FilmPage = () => {
 
     const goBack = () => navigate(-1)
 
-    useEffect(() => {
-        fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
-            method: 'GET',
-            headers: {
-                'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
-                'Content-Type': 'application/json',
-            },
-        })
-        .then(res => res.json())
-        .then(json => {
-            setFilmCart(json)
+    const init = async () => {
+        try {
+            setFetching(false)
+            const api = fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': '6e0c4cd5-64e2-412d-ba16-21a38ab9e342',
+                    'Content-Type': 'application/json',
+                }
+            })
+            const response = await api
+            const item =  await response.json()
+            setFilmCart(item)
+        } catch (e) {
+            console.log("init: ", e);
+        } finally {
             setFetching(true)
-        })
+        }
+    }
 
+    useEffect(() => {
+        init()
     }, [])
 
     const formatTime = (filmLength) => {
@@ -49,18 +55,51 @@ const FilmPage = () => {
                         <img src = {arrComeBack} alt="" />
                         <p>Назад</p>
                     </a>
-                    <h3>{filmCart.serial ? "Сериалы" : "Фильмы"}</h3>
+                    <h3>
+                        {
+                            filmCart.serial 
+                            ? "Сериалы" 
+                            : "Фильмы"
+                        }
+                    </h3>
                     <div className = "film-cart">
                         <div className = "film-cart__poster">
                             <img className = "poster_img" src = {filmCart.posterUrl} alt="" />
                         </div>
                         <div className = "film-cart__info">
                             <div className = "name">
-                                <h1 className = "name__ru">{filmCart.nameRu} ({filmCart.serial ? filmCart.year + "-" + filmCart.endYear : filmCart.year})</h1>
-                                <p className = "name__en">{filmCart.nameOriginal} <span>{fetching && filmCart.ratingAgeLimits != null && filmCart.ratingAgeLimits.slice(3)}+</span></p>
+                                <h1 className = "name__ru">
+                                    {filmCart.nameRu}
+                                    ( 
+                                    {
+                                        filmCart.serial 
+                                        ? filmCart.year + "-" + 
+                                            (filmCart.endYear === null 
+                                            ? "..." 
+                                            : filmCart.endYear)
+                                        : filmCart.year
+                                    }
+                                    )
+                                </h1>
+                                <p className = "name__en">
+                                    {filmCart.nameOriginal} 
+                                    <span>
+                                        {
+                                            fetching && 
+                                            filmCart.ratingAgeLimits != null && filmCart.ratingAgeLimits.slice(3)
+                                        }
+                                        +
+                                    </span>
+                                </p>
                             </div>
                             <div className = "about-film">
-                                <h2>{filmCart.serial ? "О сериале:" : "О фильме:"}</h2>
+                                <h2>
+                                    {
+                                        filmCart.serial 
+                                        ? "О сериале:" 
+                                        : "О фильме:"
+                                    }
+                                </h2>
                                 <table>
                                     <tbody>
                                         <tr>
@@ -73,7 +112,9 @@ const FilmPage = () => {
                                                 {
                                                     fetching &&
                                                     filmCart.countries.map((obj, index) => (
-                                                        index != (filmCart.countries.length - 1) ? `${obj.country}, ` : obj.country
+                                                        index != (filmCart.countries.length - 1) 
+                                                        ? `${obj.country}, ` 
+                                                        : obj.country
                                                     ))
                                                 }
                                             </th>
@@ -84,7 +125,9 @@ const FilmPage = () => {
                                                 {
                                                     fetching &&
                                                     filmCart.genres.map((obj, index) => (
-                                                        index != (filmCart.genres.length - 1) ? obj.genre + ', ' : obj.genre
+                                                        index != (filmCart.genres.length - 1) 
+                                                        ? obj.genre + ', ' 
+                                                        : obj.genre
                                                     ))
                                                 }
                                             </th>
@@ -94,11 +137,11 @@ const FilmPage = () => {
                                             <th className = "value">"{filmCart.slogan}"</th>
                                         </tr>
                                         {
-                                            !filmCart.serial ?
-                                            <tr>
+                                            !filmCart.serial
+                                            ? <tr>
                                                 <th className = "parametr">Время</th>
                                                 <th className = "value">{filmCart.filmLength} мин. / {formatTime(filmCart.filmLength)}</th>
-                                            </tr>
+                                              </tr>
                                             : <></>
                                         }
                                     </tbody>
