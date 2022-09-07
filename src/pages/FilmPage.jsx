@@ -42,6 +42,16 @@ const FilmPage = () => {
     console.log(filmCart);
 
     return (
+        /* 
+        <main>
+            <GoBack />
+            <Content /> // тут в нем еще отдельный компонент таблицы будет
+            <Synpopsis />
+            <Rating />
+        </main>
+        Таблицу вынеси в отдельный компонент
+        Дроби свои страницы на компоненты, это улучшает производительность и перерисовку экрана
+        */
         <>
             <main>
                 <div className = "main-container">
@@ -112,7 +122,7 @@ const FilmPage = () => {
                     </div>
                     <div className = "raiting-and-watch">
                         <h2>Оценка: <span>{filmCart.ratingKinopoisk}/10</span></h2>
-                        <a className = "button button_watch" href = {filmCart.webUrl} target="_blank">
+                        <a className = "button button_watch" href = {filmCart.webUrl} target="_blank" rel="noreferrer">
                             <p>Смотреть</p>
                             <img src = {watch} alt = "" />
                         </a>
