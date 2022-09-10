@@ -1,7 +1,7 @@
 import React from 'react'
 import MaskedInput from 'react-text-mask';
 
-const BuyForm = () => {
+export const BuyForm = () => {
 
     return (
         <form action="">
@@ -46,5 +46,3 @@ const BuyForm = () => {
         </form>
     )
 }
-
-export default BuyForm

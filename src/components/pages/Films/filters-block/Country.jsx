@@ -1,6 +1,6 @@
 import React,  {useState, useEffect} from 'react'
 
-const Country = ({updateData}) => {
+export const Country = ({updateData}) => {
 
     const countries = ["Австралия", "Австрия", "Бельгия", 
                         "Великобритания", "Германия", 
@@ -36,5 +36,3 @@ const Country = ({updateData}) => {
         </div>
     )
 }
-
-export default Country

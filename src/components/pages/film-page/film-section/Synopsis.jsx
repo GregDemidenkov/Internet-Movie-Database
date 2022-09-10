@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Synopsis = ({description, shortDescription}) => {
+export const Synopsis = ({description, shortDescription}) => {
 
     return (
         <div className = "synopsis">
@@ -9,5 +9,3 @@ const Synopsis = ({description, shortDescription}) => {
         </div>
     )
 }
-
-export default Synopsis

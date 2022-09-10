@@ -1,6 +1,6 @@
 import React,  {useState, useEffect} from 'react'
 
-const Rating = ({updateData}) => {
+export const Rating = ({updateData}) => {
 
     const ratings = ["Больше 9", "Больше 8", "Больше 7", "Больше 6", "Больше 5"]
 
@@ -31,5 +31,3 @@ const Rating = ({updateData}) => {
         </div>
     )
 }
-
-export default Rating

@@ -2,7 +2,7 @@ import React from 'react'
 
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
-const Message = ({count}) => {
+export const Message = ({count}) => {
 
     return (
         <div className = {count > 0 ? "message" : "message active"}>
@@ -11,5 +11,3 @@ const Message = ({count}) => {
         </div>
     )
 }
-
-export default Message

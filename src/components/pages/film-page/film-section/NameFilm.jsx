@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NameFilm = ({
+export const NameFilm = ({
     serial,
     nameRu,
     year,
@@ -35,5 +35,3 @@ const NameFilm = ({
         </div>
     )
 }
-
-export default NameFilm

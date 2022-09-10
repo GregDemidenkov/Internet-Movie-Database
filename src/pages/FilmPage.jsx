@@ -1,11 +1,11 @@
 import React,  {useState, useEffect} from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
-import { FilmSection } from '../components'
+import { FilmSection } from 'components/pages/film-page/FilmSection'
 
-import arrComeBack from '../img/come-back.svg'
+import arrComeBack from 'assets/img/come-back.svg'
 
-const FilmPage = () => {
+export const FilmPage = () => {
 
     const {id} = useParams();
 
@@ -85,5 +85,3 @@ const FilmPage = () => {
 
     )
 }
-
-export default FilmPage

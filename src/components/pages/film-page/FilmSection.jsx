@@ -1,9 +1,13 @@
 import React from 'react'
 
-import { AboutFilm, NameFilm, Poster, Raiting, Synopsis, Images } from '../../'
+import { AboutFilm } from './film-section/AboutFilm'
+import { NameFilm } from './film-section/NameFilm'
+import { Poster } from './film-section/Poster'
+import { Synopsis } from './film-section/Synopsis'
+import { Images } from './film-section/Images'
+import { Raiting } from './film-section/Raiting'
 
-
-const FilmSection = ({filmCart, images}) => {
+export const FilmSection = ({filmCart, images}) => {
 
     return (
         <div className="film-section">
