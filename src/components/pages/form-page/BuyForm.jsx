@@ -1,5 +1,6 @@
 import React from 'react'
 import MaskedInput from 'react-text-mask';
+import { BaseButton } from 'components/ui/BaseButton'
 
 export const BuyForm = () => {
 
@@ -41,7 +42,7 @@ export const BuyForm = () => {
                 </p>
                 <p>CVV/CVC <br /><input type="password" placeholder = "3 цифры" maxLength = "3" /></p>
             </div>
-            <button type = "button" onClick = {() => alert("Подиска оформлена!")} >Оплатить 299 ₽</button>
+            <BaseButton onClick={() => alert("Подиска оформлена!")}>Оплатить 299 ₽</BaseButton>
             <p className = "info">Нажимая «Оплатить» вы принимаете условия <span>оферты</span>, а также <span>Лицензионного соглашения</span> и <span>Политики конфиденциальности</span></p>
         </form>
     )

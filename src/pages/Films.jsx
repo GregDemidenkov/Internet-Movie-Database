@@ -1,7 +1,6 @@
 import React,  {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import arrComeBack from 'assets/img/come-back.svg'
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 import {FilmCart} from 'components/common/FilmCart'
@@ -9,6 +8,13 @@ import {Filters} from 'components/pages/films/Filters'
 import {FilterItem} from 'components/pages/films/FilterItem'
 import {FilmLoading} from 'components/pages/films/FilmLoading'
 import {Message} from 'components/pages/films/Message'
+
+import { BackButton } from 'components/common/BackButton'
+import { paths } from 'routing/config'
+
+import { years } from 'components/pages/films/filters-block/filter-data-mock'
+import { esscenseList } from 'api/requests'
+import { headers } from 'api/apiClient'
 
 export const Films = ({page}) => {
 
@@ -28,27 +34,27 @@ export const Films = ({page}) => {
     const init = async () => {
         try {
             setFetching(false)
+            // fetchClient.get(url, params: { type: 'FILM', page: 1 })
+            const makeDinamicQueryString = (headers) => {
+                // ['type', 'page']
+                const baseUri = ""
+                const paramsString = Object.keys(headers).map(key => key + "=" + headers['key']).join("&")
+                return baseUri+paramsString
+                
+            }
             const arrApi = [
-                fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=${page === "films" ? "FILM" : "TV_SERIES"}&page=1`, {
+                fetch(esscenseList({ type: page === "films" ? "FILM" : "TV_SERIES", page: 1 }), {
                     method: 'GET',
-                    headers: {
-                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                        'Content-Type': 'application/json',
-                    },
+                    headers,
                 }),
-                fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=${page === "films" ? "FILM" : "TV_SERIES"}&page=2`, {
+                
+                fetch(esscenseList({ type: page === "films" ? "FILM" : "TV_SERIES", page: 2 }), {
                     method: 'GET',
-                    headers: {
-                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                        'Content-Type': 'application/json',
-                    },
+                    headers,
                 }),
-                fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=${page === "films" ? "FILM" : "TV_SERIES"}&page=3`, {
+                fetch(esscenseList({ type: page === "films" ? "FILM" : "TV_SERIES", page: 3 }), {
                     method: 'GET',
-                    headers: {
-                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                        'Content-Type': 'application/json',
-                    },
+                    headers,
                 }),
             ]
             const arrResponces = await Promise.allSettled(arrApi)
@@ -77,9 +83,6 @@ export const Films = ({page}) => {
         setСurentCountry("")
         setСurentYear("")
     }, [page])
-
-    console.log(items);
-    console.log(count);
 
     const changeStatusByRating = (rating) => {
         items.forEach(obj => {
@@ -165,39 +168,46 @@ export const Films = ({page}) => {
     }
 
     const updateByYear = (info) => {
-        if (info === "") {
-            return 0
+        const findedElem = years.find(item => item.label === info)
+        if (findedElem) {
+            const [startDate, endDate] = findedElem.arrYears
+            changeStatusByYear(startDate, endDate)
+            return
         }
-        if(info === "2022 год") {
-            changeStatusByYear(2022, 2022)
-        }
-        if(info === "2021 год") {
-            changeStatusByYear(2021, 2021)
-        }
-        if(info === "2020 год") {
-            changeStatusByYear(2020, 2020)
-        }
-        if(info === "2019 год") {
-            changeStatusByYear(2019, 2019)
-        }
-        if(info === "2015-2019") {
-            changeStatusByYear(2015, 2019)
-        }
-        if(info === "2010-2015") {
-            changeStatusByYear(2010, 2015)
-        }
-        if(info === "2000-2010") {
-            changeStatusByYear(2000, 2010)
-        }
-        if(info === "1990-2000") {
-            changeStatusByYear(1990, 2000)
-        }
-        if(info === "1980-1990") {
-            changeStatusByYear(1980, 1990)
-        }
-        if(info === "до 1980") {
-            changeStatusByYear(1900, 1980)
-        }
+        console.log('updateByYear not found');
+        // if (info === "") {
+        //     return 0
+        // }
+        // if(info === "2022 год") {
+        //     changeStatusByYear(2022, 2022)
+        // }
+        // if(info === "2021 год") {
+        //     changeStatusByYear(2021, 2021)
+        // }
+        // if(info === "2020 год") {
+        //     changeStatusByYear(2020, 2020)
+        // }
+        // if(info === "2019 год") {
+        //     changeStatusByYear(2019, 2019)
+        // }
+        // if(info === "2015-2019") {
+        //     changeStatusByYear(2015, 2019)
+        // }
+        // if(info === "2010-2015") {
+        //     changeStatusByYear(2010, 2015)
+        // }
+        // if(info === "2000-2010") {
+        //     changeStatusByYear(2000, 2010)
+        // }
+        // if(info === "1990-2000") {
+        //     changeStatusByYear(1990, 2000)
+        // }
+        // if(info === "1980-1990") {
+        //     changeStatusByYear(1980, 1990)
+        // }
+        // if(info === "до 1980") {
+        //     changeStatusByYear(1900, 1980)
+        // }
     }
 
     const filterDict = {
@@ -242,10 +252,7 @@ export const Films = ({page}) => {
     return (
         <main>
             <div className = "main-container">
-                <a onClick = {goBack} className = "come-back" href="#">
-                    <img src = {arrComeBack} alt="" />
-                    <p>Назад</p>
-                </a>
+                <BackButton to={paths.main} />
                 <h3>
                     {
                         page === "films" 

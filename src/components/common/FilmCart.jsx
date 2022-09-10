@@ -22,7 +22,7 @@ export const FilmCart = ({poster, name, rating, id, countries, genres, year, act
     
     return(
         
-        <Link href = "#top" className = {filmStyle} to = {`/filmPage/${id}`} id = {id}>
+        <Link className = {filmStyle} to = {`/filmPage/${id}`} id = {id}>
             <div className = "film__poster">
                 <img src={poster} alt="" />
                 {

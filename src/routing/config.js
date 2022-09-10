@@ -3,4 +3,5 @@ export const paths = {
     serials: "serials",
     formPage: "formPage",
     filmPage: "filmPage/:id",
+    main: '/,'
   };

@@ -1,0 +1,1 @@
+export const esscenseList = ({ type, page }) => `https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=${type}&page=${page}`

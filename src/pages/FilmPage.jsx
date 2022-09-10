@@ -2,8 +2,8 @@ import React,  {useState, useEffect} from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { FilmSection } from 'components/pages/film-page/FilmSection'
-
-import arrComeBack from 'assets/img/come-back.svg'
+import { BackButton } from 'components/common/BackButton'
+import { paths } from 'routing/config'
 
 export const FilmPage = () => {
 
@@ -61,10 +61,7 @@ export const FilmPage = () => {
         <>
             <main>
                 <div name = "top" className = "main-container">
-                    <a onClick = {goBack} className = "come-back" href = "#">
-                        <img src = {arrComeBack} alt="" />
-                        <p>Назад</p>
-                    </a>
+                    <BackButton to={paths.films} />
                     <h3>
                         {
                             filmCart.serial 
