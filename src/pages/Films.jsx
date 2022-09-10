@@ -2,12 +2,14 @@ import React,  {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import arrComeBack from '../img/come-back.svg'
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
-import {FilmCart, Filters, FilterItem, FilmLoading} from '../components'
+import {FilmCart, Filters, FilterItem, FilmLoading, Message} from '../components'
 
 function Films({page}) {
 
     const [items, setItems] = useState([]);
+    const [count, setCount] = useState();
     const [fetching, setFetching] = useState(false)
     const [updating, setUpdating] = useState(0)
     const [curentRating, setСurentRating] = useState("")
@@ -55,6 +57,7 @@ function Films({page}) {
                 .flat()
                 .map(item => ({ ...item, status: "active" }))
             setItems(arrItems)
+            setCount(60)
         } catch (e) {
             console.log("init: ", e)
         } finally {
@@ -64,9 +67,15 @@ function Films({page}) {
 
     useEffect(() => {
         init()
+        setCount(60)
+        setСurentRating("")
+        setСurentGenre("")
+        setСurentCountry("")
+        setСurentYear("")
     }, [page])
 
     console.log(items);
+    console.log(count);
 
     const changeStatusByRating = (rating) => {
         items.forEach(obj => {
@@ -223,9 +232,9 @@ function Films({page}) {
         
         setUpdating(0)
         setItems(items)
+        setCount(document.getElementsByClassName("film").length)
     }, [updating === 1])
 
-    
     return (
         <main>
             <div className = "main-container">
@@ -296,6 +305,7 @@ function Films({page}) {
                         : Array(60).fill(0).map((_, index) => <FilmLoading key = {index}/>)
                     }
                 </div>
+                <Message count = {count}/>
             </div>
         </main>
     );

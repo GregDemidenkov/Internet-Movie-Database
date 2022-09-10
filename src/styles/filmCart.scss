@@ -18,125 +18,194 @@ main {
         color: $white;
     }
 
-    .film-cart {
+    .film-section {
         display: flex;
-        &__poster {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            .poster_img {
-                width: 350px;
-                height: auto;
-                margin-bottom: 20px;
-            }
-        }
-        &__info {
-            color: $white;
-            margin-left: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            .name {
-                margin-bottom: 40px;
-                &__ru {
-                    font-size: 48px;
-                    height: auto;
-                }
-                &__en {
-                    margin-top: 10px;
-                    font-size: 24px;
-                    color: $light-gray;
-                    display: flex;
-                    align-items: center;
-                    span {
-                        font-size: 14px;
-                        border: 1px solid $light-gray;
-                        margin-left: 10px;
-                    }
-                }
-            }
-            .about-film {
-                text-align: left;
-                h2 {
-                    font-size: 28px;
-                }
-                table {
-                    font-size: 20px;
-                    margin-top: 20px;
-                    .parametr {
-                        width: 30%;
-                        padding: 8px 0;
-                        vertical-align: top;
-                    }
-                    .value {
-                        color: $light-gray;
-                        padding: 8px 40px;
-                    }
-                }
-            }
-        }
-    
-    @media(max-width: 1150px) {
         flex-direction: column;
-        &__info {
-            margin-left: 0;
-            .name {
-                text-align: center;
-                &__en {
-                    justify-content: center;
-                }
-            }
-        }
-    }
-
-    }
-    .synopsis {
-        margin-top: 40px;
         h2 {
             font-size: 36px;
             margin-bottom: 20px;
             color: $white;
         }
-        p {
-            font-size: 20px;
-            color: $light-gray;
-        }
-    }
-    .raiting-and-watch {
-        display: flex;
-        justify-content: space-evenly;
-        margin-top: 40px;
-        h2 {
-            margin: 0;
-            padding-top: 5px;
-            margin-right: 15px;
-            font-size: 36px;
-            color: $white;
-            span {
-                color: $red;
+        .film-main {
+            display: flex;
+            &__poster {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .poster_img {
+                    width: 350px;
+                    height: auto;
+                    margin-bottom: 20px;
+                }
+            }
+            &__info {
+                color: $white;
+                margin-left: 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                .name {
+                    margin-bottom: 40px;
+                    &__ru {
+                        font-size: 48px;
+                        height: auto;
+                    }
+                    &__en {
+                        margin-top: 10px;
+                        font-size: 24px;
+                        color: $light-gray;
+                        display: flex;
+                        align-items: center;
+                        span {
+                            font-size: 14px;
+                            border: 1px solid $light-gray;
+                            margin-left: 10px;
+                        }
+                    }
+                }
+                .about-film {
+                    text-align: left;
+                    h3 {
+                        font-size: 28px;
+                    }
+                    table {
+                        font-size: 20px;
+                        margin-top: 20px;
+                        .parametr {
+                            width: 30%;
+                            padding: 8px 0;
+                            vertical-align: top;
+                        }
+                        .value {
+                            color: $light-gray;
+                            padding: 8px 40px;
+                        }
+                    }
+                }
+            }
+
+            @media(max-width: 1150px) {
+                flex-direction: column;
+                .film-main {
+                    &__info {
+                        margin-left: 0;
+                        .name {
+                            text-align: center;
+                            &__en {
+                                justify-content: center;
+                            }
+                        }
+                    }
+                }
             }
         }
-    }
-    .button {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        text-align: center;
-        width: 168px;
-        height: 56px;
-        background-color: $red;
-        border-radius: 28px;
-        p {
-            color: $white;
-        }
-        &_watch {
-            img {
-                margin: 0 0 0 10px;
-            }
+        .synopsis {
+            margin-top: 40px;
             p {
-                margin-left: 30px;
+                font-size: 20px;
+                color: $light-gray;
             }
         }
+        .raiting-and-watch {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 40px;
+            h2 {
+                margin: 0 15px 0 0;
+                padding-top: 5px;
+                span {
+                    color: $red;
+                }
+            }
+            .button {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                text-align: center;
+                width: 168px;
+                height: 56px;
+                background-color: $red;
+                border-radius: 28px;
+                p {
+                    color: $white;
+                }
+                &_watch {
+                    img {
+                        margin: 0 0 0 10px;
+                    }
+                    p {
+                        margin-left: 30px;
+                    }
+                }
+            }
+        }
+        .images-section {
+            margin-top: 40px;
+            .images {
+                column-count: 3;
+                column-width: 33%;
+                img {
+                    margin-bottom: 20px;
+                    padding: 0 5px;
+                    border-radius: 10px;
+                    width: 100%;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                }
+                img:hover {
+                    opacity: 0.8;
+                    transform: scale(1.02);
+                }
+            @media(max-width: 762px) {
+                column-count: 2;
+                column-width: 50%;
+            }
+            }
+            .modalWindow {
+                width: 100%;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $black;
+                visibility: hidden;
+                opacity: 0;
+                transform: scale(0);
+                overflow: hidden;
+                z-index: 999;
+                transition: all .3s;
+                .curentImg {
+                    width: auto;
+                    max-width: 100%;
+                    height: auto;
+                    max-height: 100%;
+                    display: block;
+                    line-height: 0;
+                    box-sizing: border-box;
+                    padding: 20px 0;
+                    margin: 20px auto;
+                }
+                .close {
+                    position: fixed;
+                    top: 10px;
+                    right: 10px;
+                    width: 48px;
+                    height: 48px;
+                    padding: 5px;
+                    cursor: pointer;
+                    color: $white;
+                }
+            }
+            .open {
+                visibility: visible;
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
     }
 
     @media(max-width: 480px) {
@@ -150,7 +219,7 @@ main {
     }
 
     @media(max-width: 400px) {
-        .film-cart {
+        .film-main {
             &__poster {
                 .poster_img {
                     width: 80%;

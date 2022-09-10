@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 const FilmCart = ({poster, name, rating, id, countries, genres, year, active}) => {
     
     let classNameRating = "film__rating"
+    const filmStyle = active 
+        ? "film film_item film_margin-bottom film-animation" 
+        : "film film_item film_margin-bottom"
 
     const ratingColor = (rating) => {
         if (rating < 5) {
@@ -19,7 +22,7 @@ const FilmCart = ({poster, name, rating, id, countries, genres, year, active}) =
     
     return(
         
-        <Link href = "#top" className = "film film_item film_margin-bottom" to = {`/filmPage/${id}`} id = {id}>
+        <Link href = "#top" className = {filmStyle} to = {`/filmPage/${id}`} id = {id}>
             <div className = "film__poster">
                 <img src={poster} alt="" />
                 {
