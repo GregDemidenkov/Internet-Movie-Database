@@ -1,6 +1,6 @@
 import React,  {useState, useEffect} from 'react'
 
-const Year = ({updateData}) => {
+export const Year = ({updateData}) => {
 
     const years = ["2022 год", "2021 год", "2020 год", 
                     "2019 год", "2015-2019", "2010-2015", "2000-2010", 
@@ -37,5 +37,3 @@ const Year = ({updateData}) => {
 
     )
 }
-
-export default Year

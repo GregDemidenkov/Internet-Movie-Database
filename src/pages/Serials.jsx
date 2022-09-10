@@ -1,12 +1,15 @@
 import React,  {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import arrComeBack from '../img/come-back.svg'
-import deleteButton from "../img/delete.svg"
+import arrComeBack from 'assets/img/come-back.svg'
+import deleteButton from "assets/img/delete.svg"
 
-import {FilmCart, Filters, FilmLoading} from '../components'
+import { FilmCart } from 'components/common/FilmCart'
+import { Filters } from 'components/pages/films/Filters'
+import { FilmLoading } from 'components/pages/films/FilmLoading/'
 
-function Serials() {
+
+export const Serials = () => {
     
     const [serials, setSerials] = useState([]);
     const [fetching, setFetching] = useState(false)

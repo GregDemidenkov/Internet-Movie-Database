@@ -1,7 +1,7 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-const FilmLoading = (props) => (
+export const FilmLoading = (props) => (
   <ContentLoader 
   className = "film film_item film_margin-bottom"  
   speed={2}
@@ -16,5 +16,3 @@ const FilmLoading = (props) => (
     <rect x="96" y="188" rx="0" ry="0" width="1" height="0" />
   </ContentLoader>
 )
-
-export default FilmLoading

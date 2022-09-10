@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AboutFilm = ({
+export const AboutFilm = ({
     serial,
     year,
     countries,
@@ -71,5 +71,3 @@ const AboutFilm = ({
         </div>
     )
 }
-
-export default AboutFilm

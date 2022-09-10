@@ -1,11 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { BuyForm } from '../components'
+import { BuyForm } from 'components/pages/form-page/BuyForm'
 
-import arrComeBack from '../img/come-back.svg'
+import arrComeBack from 'assets/img/come-back.svg'
 
-const FormPage = () => {
+export const FormPage = () => {
 
     const navigate = useNavigate()
 
@@ -24,5 +24,3 @@ const FormPage = () => {
         </main>
     )
 }
-
-export default FormPage

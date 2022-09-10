@@ -2,9 +2,10 @@ import React,  {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import Slider from "react-slick";
 
-import {FilmCart, FilmLoading} from '../components'
+import {FilmCart} from 'components/common/FilmCart'
+import {FilmLoading} from 'components/pages/films/FilmLoading'
 
-const Main = () => {
+export const Main = () => {
     
     const sliderSetting = {
         infinite: false,
@@ -152,5 +153,3 @@ const Main = () => {
         </>
     )
 }
-
-export default Main;

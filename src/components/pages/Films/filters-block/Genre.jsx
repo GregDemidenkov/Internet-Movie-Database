@@ -1,6 +1,6 @@
 import React,  {useState, useEffect} from 'react'
 
-const Genre = ({updateData}) => {
+export const Genre = ({updateData}) => {
 
     const genres = ["Боевик", "Драма", "Мелодрама", 
                     "Комедия", "Триллер", "Ужасы", 
@@ -38,5 +38,3 @@ const Genre = ({updateData}) => {
 
     )
 }
-
-export default Genre

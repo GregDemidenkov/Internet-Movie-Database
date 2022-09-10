@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Poster = ({posterUrl}) => {
+export const Poster = ({posterUrl}) => {
 
     return (
         <div className = "film-main__poster">
@@ -8,5 +8,3 @@ const Poster = ({posterUrl}) => {
         </div>
     )
 }
-
-export default Poster

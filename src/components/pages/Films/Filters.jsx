@@ -1,8 +1,12 @@
 import React from 'react'
 
-import {Genre, Year, Country, Rating} from './FiltersBlock'
+import {Genre} from './filters-block/Genre'
+import {Year} from './filters-block/Year'
+import {Country} from './filters-block/Country'
+import {Rating} from './filters-block/Rating'
 
-const Filters = ({updateData}) => {
+
+export const Filters = ({updateData}) => {
 
     return (
         
@@ -15,5 +19,3 @@ const Filters = ({updateData}) => {
 
     )
 }
-
-export default Filters

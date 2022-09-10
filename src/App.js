@@ -1,8 +1,12 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom'
 
-import {Main, Films, FilmPage, FormPage} from './pages'
-import {Layout} from './components'
+import {Layout} from 'components/common/Layout'
+import {Main} from 'pages/Main'
+import {Films} from 'pages/Films'
+import {FormPage} from 'pages/FormPage'
+import {FilmPage} from 'pages/FilmPage'
+
 import {paths} from './routing/config'
 
 

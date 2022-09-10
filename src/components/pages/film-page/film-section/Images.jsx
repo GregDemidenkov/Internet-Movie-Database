@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 
-const Images = ({images}) => {
+export const Images = ({images}) => {
 
     const [isOpenModal, setIsOpenModal] = useState(false)
     const [curentImg, setCurentImg] = useState("")
@@ -30,5 +30,3 @@ const Images = ({images}) => {
         </div>
     )
 }
-
-export default Images

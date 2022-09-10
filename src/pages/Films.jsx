@@ -1,12 +1,16 @@
 import React,  {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import arrComeBack from '../img/come-back.svg'
+import arrComeBack from 'assets/img/come-back.svg'
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
-import {FilmCart, Filters, FilterItem, FilmLoading, Message} from '../components'
+import {FilmCart} from 'components/common/FilmCart'
+import {Filters} from 'components/pages/films/Filters'
+import {FilterItem} from 'components/pages/films/FilterItem'
+import {FilmLoading} from 'components/pages/films/FilmLoading'
+import {Message} from 'components/pages/films/Message'
 
-function Films({page}) {
+export const Films = ({page}) => {
 
     const [items, setItems] = useState([]);
     const [count, setCount] = useState();
@@ -311,6 +315,3 @@ function Films({page}) {
     );
     
 }
-
-export default Films;
-

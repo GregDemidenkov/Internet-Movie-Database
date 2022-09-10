@@ -1,7 +1,7 @@
 import React from 'react'
-import deleteButton from "../../../img/delete.svg"
+import deleteButton from "assets/img/delete.svg"
 
-const FilterItem = ({filter, updateData, filterKey}) => {
+export const FilterItem = ({filter, updateData, filterKey}) => {
 
     return (
         <div className="filter-item">
@@ -10,5 +10,3 @@ const FilterItem = ({filter, updateData, filterKey}) => {
         </div>
     )
 }
-
-export default FilterItem
