@@ -69,13 +69,13 @@ main {
             .dropdown-item {
                 list-style: none;
                 cursor: pointer;
-                a {
+                p {
                     text-decoration: none;
                     color: $white;
                 }
             }
             .dropdown-item:hover {
-                a {
+                p {
                     color: $red;
                 }
             }

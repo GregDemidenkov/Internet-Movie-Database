@@ -1,14 +1,9 @@
-import React,  {useState, useEffect} from 'react'
+import React from 'react'
+
+import { genres } from './filter-data-mock'
 
 export const Genre = ({updateData}) => {
-
-    const genres = ["Боевик", "Драма", "Мелодрама", 
-                    "Комедия", "Триллер", "Ужасы", 
-                    "Фантастика", "Фэнтези", "Криминал", 
-                    "Приключения", "Семейный", "Мультфильм"]
-
-    return (
-        
+    return (   
         <div className = "filters__genre dropdown-menu">
             <button className = "filters__button genre__button " type = "button">
                 <p>Жанры</p>
@@ -25,13 +20,11 @@ export const Genre = ({updateData}) => {
             </button>
             <ul className = "dropdown-content genre-dropdown">
                 {
-                    
                     genres.map(obj => 
-                        <li key = {obj} className = "dropdown-item">
-                            <a onClick = {() => {updateData({key: "genre", value: obj})}} >{obj}</a>
+                        <li key = {obj.label} className = "dropdown-item" onClick = {() => {updateData({key: "genre", value: obj.label})}}>
+                            <p>{obj.label}</p>
                         </li>
                     )
-
                 }
             </ul>
         </div>

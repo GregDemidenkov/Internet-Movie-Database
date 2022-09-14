@@ -1,14 +1,8 @@
 import React,  {useState, useEffect} from 'react'
 
+import {countries} from './filter-data-mock'
+
 export const Country = ({updateData}) => {
-
-    const countries = ["Австралия", "Австрия", "Бельгия", 
-                        "Великобритания", "Германия", 
-                        "Гонконг", "Греция", "Дания", "Испания", 
-                        "Италия", "Нидерланды", "Норвегия", "Россия", 
-                        "СССР", "США", "Турция", "Франция", "Швеция", 
-                        "Южная Корея", "Япония"]
-
     return (
         <div className = "filters__country dropdown-menu">
             <button className = "filters__button country__button " type = "button">
@@ -27,8 +21,8 @@ export const Country = ({updateData}) => {
             <ul className = "dropdown-content country-dropdown">
                 {
                     countries.map(obj => 
-                        <li key = {obj} className = "dropdown-item">
-                            <a onClick = {() => {updateData({key: "country", value: obj})}} >{obj}</a>
+                        <li key = {obj.label} className = "dropdown-item" onClick = {() => {updateData({key: "country", value: obj.label})}}>
+                            <p>{obj.label}</p>
                         </li>
                     )
                 }

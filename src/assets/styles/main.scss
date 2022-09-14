@@ -85,7 +85,7 @@ main {
     margin: 150px 0 50px;
     min-height: 100vh;  
     .main-screen {
-        background-image: url("../assets/img/background.jpg");
+        background-image: url("../img/background.jpg");
         background-repeat: repeat;
         background-size: 400px auto;
         background-attachment: fixed;
@@ -119,11 +119,12 @@ main {
                 }
             }
             .button-to-form-page {
-                text-decoration: none;
+                border: 0;
                 padding: 20px 40px;
                 border-radius: 30px;
                 background-color: $red;
                 color: $white;
+                cursor: pointer;
             }
         }
     }
@@ -205,7 +206,7 @@ main {
         bottom: 0px;
         left: -1px;
         opacity: 0;
-        width: 101%;
+        width: 239px;
         height: 220px;
         background-color: $black;
         overflow: hidden;

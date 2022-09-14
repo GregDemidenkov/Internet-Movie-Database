@@ -4,11 +4,13 @@ export const BaseButton = ({
   onClick = () => {},
   disabled,
   children,
-  type
+  type,
+  className
 }) => {
   return (
     <button
       type={type || "button"}
+      className = {className}
       disabled={disabled || false}
       onClick={onClick}
       >

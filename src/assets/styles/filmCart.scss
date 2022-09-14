@@ -4,8 +4,7 @@ main {
     .come-back {
         display: flex;
         align-items: center;
-        text-decoration: none;
-        width: 100px;
+        width: 168px;
         p {
             color: $light-gray;
             font-size: 26px;
@@ -108,16 +107,15 @@ main {
         }
         .raiting-and-watch {
             display: flex;
-            justify-content: space-evenly;
             margin-top: 40px;
             h2 {
-                margin: 0 15px 0 0;
+                margin: 0 50px 0 0;
                 padding-top: 5px;
                 span {
                     color: $red;
                 }
             }
-            .button {
+            .button_watch {
                 display: flex;
                 align-items: center;
                 text-decoration: none;
@@ -126,16 +124,13 @@ main {
                 height: 56px;
                 background-color: $red;
                 border-radius: 28px;
+                cursor: pointer;
                 p {
                     color: $white;
+                    margin-left: 30px;
                 }
-                &_watch {
-                    img {
-                        margin: 0 0 0 10px;
-                    }
-                    p {
-                        margin-left: 30px;
-                    }
+                img {
+                    margin: 0 0 0 10px;
                 }
             }
         }

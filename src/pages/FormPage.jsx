@@ -1,23 +1,15 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { BuyForm } from 'components/pages/form-page/BuyForm'
+import { BackButton } from 'components/common/BackButton'
 
-import arrComeBack from 'assets/img/come-back.svg'
+import { paths } from 'routing/config'
 
 export const FormPage = () => {
-
-    const navigate = useNavigate()
-
-    const goBack = () => navigate(-1)
-
     return (
         <main>
             <div className="main-container">
-                <a onClick = {goBack} className = "come-back" href="#">
-                    <img src = {arrComeBack} alt="" />
-                    <p>Назад</p>
-                </a>
+                <BackButton path = {paths.main}>На главную</BackButton>
                 <h3>Оформление подписки</h3>
                 <BuyForm />
             </div>

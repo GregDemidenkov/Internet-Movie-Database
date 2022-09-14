@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom'
 
-import './styles/constants.scss';
-import './styles/index.scss';
-import './styles/main.scss';
-import './styles/films-serials.scss';
-import './styles/filmCart.scss';
-import './styles/form.scss';
+import 'assets/styles/constants.scss';
+import 'assets/styles/index.scss';
+import 'assets/styles/main.scss';
+import 'assets/styles/films-serials.scss';
+import 'assets/styles/filmCart.scss';
+import 'assets/styles/form.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

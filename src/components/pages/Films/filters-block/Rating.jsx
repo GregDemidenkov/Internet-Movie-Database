@@ -1,9 +1,8 @@
-import React,  {useState, useEffect} from 'react'
+import React from 'react'
+
+import { ratings } from './filter-data-mock'
 
 export const Rating = ({updateData}) => {
-
-    const ratings = ["Больше 9", "Больше 8", "Больше 7", "Больше 6", "Больше 5"]
-
     return (
         <div className = "filters__rating dropdown-menu">
             <button className = "filters__button rating__button " type = "button">
@@ -22,8 +21,8 @@ export const Rating = ({updateData}) => {
             <ul className = "dropdown-content rating-dropdown">
                 {
                     ratings.map(obj => 
-                        <li key = {obj} className = "dropdown-item">
-                            <a onClick = {() => updateData({key: "rating", value: obj})}>{obj}</a>
+                        <li key = {obj.label} className = "dropdown-item"  onClick = {() => updateData({key: "rating", value: obj.label})}>
+                            <p>{obj.label}</p>
                         </li>
                     )
                 }

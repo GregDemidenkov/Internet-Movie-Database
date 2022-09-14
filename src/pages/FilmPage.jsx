@@ -13,10 +13,6 @@ export const FilmPage = () => {
     const [images, setImages] = useState([])
     const [fetching, setFetching] = useState(false)
 
-    const navigate = useNavigate()
-
-    const goBack = () => navigate(-1)
-
     const init = async () => {
         try {
             setFetching(false)
@@ -54,14 +50,11 @@ export const FilmPage = () => {
         init()
     }, [])
 
-    console.log(filmCart);
-    console.log(images);
-
     return (
         <>
             <main>
                 <div name = "top" className = "main-container">
-                    <BackButton to={paths.films} />
+                    <BackButton path = {filmCart.serial ? "/" + paths.serials : "/" + paths.films}>Назад</BackButton>
                     <h3>
                         {
                             filmCart.serial 

@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-
+import { ModalWindow } from './ModalWindow';
 
 export const Images = ({images}) => {
 
@@ -16,10 +15,11 @@ export const Images = ({images}) => {
     return (
         <div className="images-section">
             <h2>Кадры из фильма:</h2>
-            <div className = {isOpenModal ? "modalWindow open" : "modalWindow"}>
-                <HighlightOffIcon className = "close" onClick = {() => setIsOpenModal(false)} />
-                <img className = "curentImg" src = {curentImg} />
-            </div>
+            <ModalWindow
+                isOpenModal={isOpenModal}
+                curentImg = {curentImg}
+                setIsOpenModal = {setIsOpenModal}
+            />
             <div className="images">
                 {
                     images.map( image => (

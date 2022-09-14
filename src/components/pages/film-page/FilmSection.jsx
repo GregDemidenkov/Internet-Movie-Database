@@ -32,13 +32,13 @@ export const FilmSection = ({filmCart, images}) => {
                     />            
                 </div>
             </div>
-           <Synopsis 
-                description = {filmCart.description}
-                shortDescription = {filmCart.shortDescription}
-            />
             <Raiting 
                 ratingKinopoisk = {filmCart.ratingKinopoisk}
                 webUrl = {filmCart.webUrl}
+            />
+            <Synopsis 
+                description = {filmCart.description}
+                shortDescription = {filmCart.shortDescription}
             />
             {
                 images.length > 0 &&

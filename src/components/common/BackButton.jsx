@@ -1,12 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 import arrComeBack from 'assets/img/come-back.svg'
 
-export const BackButton = ({ path = "/" }) => {
+export const BackButton = ({
+  path,
+  children
+}) => {
   return (
-    <Link to={path} className = "come-back">
+    <Link to = {path} className = "come-back">
       <img src = {arrComeBack} alt="" />
-      <p>Назад</p>
+      <p>{children}</p>
     </Link>
   )
 }
