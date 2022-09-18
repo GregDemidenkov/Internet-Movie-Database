@@ -1,7 +1,7 @@
 import React,  {useState, useEffect} from 'react'
 
 import { FilmCart } from 'components/common/FilmCart'
-import { ActiveFilters } from '../pages/base-page/ActiveFilters'
+import { ActiveFilters } from './ActiveFilters'
 import { BackButton } from 'components/common/BackButton'
 
 import { Filters } from 'components/pages/base-page/Filters'
