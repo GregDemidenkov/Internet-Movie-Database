@@ -1,7 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const FilmCart = ({poster, name, rating, id, countries, genres, year, active}) => {
+export const FilmCart = ({
+    poster, 
+    name,
+    rating, 
+    id, 
+    countries, 
+    genres, 
+    year,
+    active
+}) => {
     
     let classNameRating = "film__rating"
     const filmStyle = active 

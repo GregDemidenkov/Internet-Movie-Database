@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
 import Slider from "react-slick";
 
 import { FilmCart } from 'components/common/FilmCart'
-import { FilmLoading } from 'components/pages/films/FilmLoading'
+import { FilmLoading } from 'components/common/FilmLoading'
 import { BaseButton } from 'components/ui/BaseButton';
+
+import { fetchClient } from 'api/fetchClient'
 
 import { sliderSetting } from './slider-settings';
 
@@ -16,22 +18,7 @@ export const Main = () => {
     const init = async () => {
         try {
             setFetching(false)
-            const arrApi = [
-                fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=RATING&type=FILM&yearFrom=2021&yearTo=2021&page=2', {
-                    method: 'GET',
-                    headers: {
-                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                        'Content-Type': 'application/json',
-                    },
-                }),
-                fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films?order=RATING&type=TV_SERIES&yearFrom=2021&yearTo=2021&page=2', {
-                    method: 'GET',
-                    headers: {
-                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                        'Content-Type': 'application/json',
-                    },
-                }),
-            ]
+            const arrApi = fetchClient("MAIN_PAGE")
             const arrResponces = await Promise.allSettled(arrApi)
             const arrRequestJson = arrResponces
                 .filter(response => response.status === "fulfilled")
@@ -79,7 +66,8 @@ export const Main = () => {
                                     countries = {obj.countries} 
                                     genres = {obj.genres}
                                     year = {obj.year}
-                                    active = {false} />
+                                    active = {false}
+                                />
                             ))
                             : Array(10).fill(0).map((_, index) => <FilmLoading key = {index}/>)
                         }
@@ -98,7 +86,8 @@ export const Main = () => {
                                     countries = {obj.countries} 
                                     genres = {obj.genres}
                                     year = {obj.year}
-                                    active = {false} />
+                                    active = {false} 
+                                />
                             ))
                             : Array(10).fill(0).map((_, index) => <FilmLoading key = {index}/>)
                         }

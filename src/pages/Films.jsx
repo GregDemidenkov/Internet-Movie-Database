@@ -2,8 +2,7 @@ import React,  {useState, useEffect} from 'react'
 
 import { BasePage } from 'components/common/BasePage'
 
-import { esscenseList } from 'api/requests'
-import { headers } from 'api/apiClient'
+import { fetchClient } from 'api/fetchClient'
 
 export const Films = () => {
 
@@ -13,29 +12,7 @@ export const Films = () => {
     const init = async () => {
         try {
             setFetching(false)
-            // fetchClient.get(url, params: { type: 'FILM', page: 1 })
-            const makeDinamicQueryString = (headers) => {
-                // ['type', 'page']
-                const baseUri = ""
-                const paramsString = Object.keys(headers).map(key => key + "=" + headers['key']).join("&")
-                return baseUri+paramsString
-                
-            }
-            const arrApi = [
-                fetch(esscenseList({ type: "FILM" , page: 1 }), {
-                    method: 'GET',
-                    headers,
-                }),
-                
-                fetch(esscenseList({ type: "FILM" , page: 2 }), {
-                    method: 'GET',
-                    headers,
-                }),
-                fetch(esscenseList({ type: "FILM" , page: 3 }), {
-                    method: 'GET',
-                    headers,
-                }),
-            ]
+            const arrApi = fetchClient("FILMS_PAGE")
             const arrResponces = await Promise.allSettled(arrApi)
             const arrRequestJson = arrResponces
                 .filter(response => response.status === "fulfilled")

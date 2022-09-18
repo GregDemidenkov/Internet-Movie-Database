@@ -5,6 +5,8 @@ import { FilmSection } from 'components/pages/film-page/FilmSection'
 import { BackButton } from 'components/common/BackButton'
 import { paths } from 'routing/config'
 
+import { fetchClient } from 'api/fetchClient'
+
 export const FilmPage = () => {
 
     const {id} = useParams();
@@ -16,22 +18,7 @@ export const FilmPage = () => {
     const init = async () => {
         try {
             setFetching(false)
-            const arrApi = [
-                fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
-                    method: 'GET',
-                    headers: {
-                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                        'Content-Type': 'application/json',
-                    }
-                }),
-                fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/images?type=STILL&page=1`, {
-                    method: 'GET',
-                    headers: {
-                        'X-API-KEY': 'b35699f3-c603-42ae-96bc-590164f9c971',
-                        'Content-Type': 'application/json',
-                    },
-                }),
-            ]
+            const arrApi = fetchClient("FILM_PAGE", id)
             const arrResponces = await Promise.allSettled(arrApi)
             const arrRequestJson = arrResponces
                 .filter(response => response.status === "fulfilled")
@@ -57,7 +44,7 @@ export const FilmPage = () => {
                     <BackButton path = {filmCart.serial ? "/" + paths.serials : "/" + paths.films}>Назад</BackButton>
                     <h3>
                         {
-                            filmCart.serial 
+                            filmCart.serial === "serials" 
                             ? "Сериалы" 
                             : "Фильмы"
                         }

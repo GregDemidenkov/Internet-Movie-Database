@@ -1,13 +1,14 @@
 import React,  {useState, useEffect} from 'react'
 
 import { FilmCart } from 'components/common/FilmCart'
-import { Filters } from 'components/pages/films/Filters'
-import { FilterItem } from 'components/pages/films/FilterItem'
-import { FilmLoading } from 'components/pages/films/FilmLoading'
-import { Message } from 'components/pages/films/Message'
+import { ActiveFilters } from '../pages/base-page/ActiveFilters'
 import { BackButton } from 'components/common/BackButton'
 
-import { years, ratings } from 'components/pages/films/filters-block/filter-data-mock'
+import { Filters } from 'components/pages/base-page/Filters'
+import { FilmLoading } from 'components/common/FilmLoading'
+import { Message } from 'components/pages/base-page/Message'
+
+import { years, ratings } from 'components/pages/base-page/filters-block/filter-data-mock'
 
 import { paths } from 'routing/config'
 
@@ -141,47 +142,14 @@ export const BasePage = ({itemsList, page}) => {
         <main>
             <div className = "main-container">
                 <BackButton path = {paths.main}>На главную</BackButton>
-                <h3>
-                    {
-                        page === "films" 
-                        ? "Фильмы" 
-                        : "Сериалы"
-                    }
-                </h3>
-                <div className="active-filter-list">
-                    {
-                        curentGenre &&
-                        <FilterItem 
-                            filter = {curentGenre}
-                            updateData = {updateDataByFilter}
-                            filterKey = {"genre"} 
-                        />
-                    }
-                    {
-                        curentCountry &&
-                        <FilterItem 
-                            filter = {curentCountry}
-                            updateData = {updateDataByFilter}
-                            filterKey = {"country"} 
-                        />
-                    }
-                    {
-                        curentYear &&
-                        <FilterItem     
-                            filter = {curentYear}
-                            updateData = {updateDataByFilter}
-                            filterKey = {"year"} 
-                        />
-                    }
-                    {
-                        curentRating &&
-                        <FilterItem 
-                            filter = {curentRating}
-                            updateData = {updateDataByFilter}
-                            filterKey = {"rating"} 
-                        />
-                    }
-                </div>
+                <h3>{ page === "films" ? "Фильмы" : "Сериалы" }</h3>
+                <ActiveFilters 
+                    curentGenre = {curentGenre}
+                    curentCountry = {curentCountry}
+                    curentYear = {curentYear}
+                    curentRating = {curentRating}
+                    updateDataByFilter = {updateDataByFilter}
+                />
                 <Filters updateData = {updateDataByFilter} key = "filters_block"/>
                 <div className = "films-list">
                     {
@@ -198,6 +166,7 @@ export const BasePage = ({itemsList, page}) => {
                                 genres = {obj.genres}
                                 year = {obj.year}
                                 active = {true}
+                                page = {page} 
                             />
 
                         )

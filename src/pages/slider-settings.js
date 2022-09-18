@@ -9,7 +9,6 @@ export const sliderSetting = {
         settings: {
             slidesToShow: 5,
             slidesToScroll: 5,
-            infinite: true,
         }
         },
         {
