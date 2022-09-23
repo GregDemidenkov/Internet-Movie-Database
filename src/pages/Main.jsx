@@ -1,6 +1,8 @@
 import React,  { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+
 import Slider from "react-slick";
+import {Animated} from "react-animated-css";
 
 import { FilmCart } from 'components/common/FilmCart'
 import { FilmLoading } from 'components/common/FilmLoading'
@@ -34,6 +36,8 @@ export const Main = () => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+        document.title = "ReFilms"
         init()
     }, [])
 
@@ -41,19 +45,21 @@ export const Main = () => {
         <main style = {{margin: 0}}>
             <div className="main-screen">
                 <div className="main-container">
-                    <div className="info">
-                        <h1><strong>ReFilms</strong> &mdash; лучший онлайн кинотеатр страны</h1>
-                        <h2>Оформите подписку за <span>299р</span> и получите доступ<br /> ко всем фильмам и сериалам</h2>
-                        <Link to = "/formPage" >
-                            <BaseButton className = "button-to-form-page" >Оформить подписку</BaseButton>
-                        </Link>
-                    </div>
+                    <Animated animationIn = "bounceInDown" animationInDuration = {1200}>
+                        <div className="info">
+                            <h1><strong>ReFilms</strong> &mdash; лучший онлайн кинотеатр страны</h1>
+                            <h2>Оформите подписку за <span>299р</span> и получите доступ<br /> ко всем фильмам и сериалам</h2>
+                            <Link to = "/formPage" >
+                                <BaseButton className = "button-to-form-page" >Оформить подписку</BaseButton>
+                            </Link>
+                        </div>
+                    </Animated>
                 </div>
             </div>
             <div className = "best-of-this-year">
                 <div className = "main-container">
                     <h3>Лучшие фильмы 2021</h3>
-                    <Slider {...sliderSetting} className = "best-of-this-year-films">
+                    <Slider {...sliderSetting} className = "slick-carousel">
                         {
                             fetching ?
                             topFilms.map( obj => (
@@ -66,14 +72,14 @@ export const Main = () => {
                                     countries = {obj.countries} 
                                     genres = {obj.genres}
                                     year = {obj.year}
-                                    active = {false}
+                                    active = {false} 
                                 />
                             ))
                             : Array(10).fill(0).map((_, index) => <FilmLoading key = {index}/>)
                         }
                     </Slider>
                     <h3>Лучшие сериалы 2021</h3>
-                    <Slider {...sliderSetting} className = "best-of-this-year-serials">
+                    <Slider {...sliderSetting} className = "slick-carousel">
                         {
                             fetching ?
                             topSerials.map( obj => (

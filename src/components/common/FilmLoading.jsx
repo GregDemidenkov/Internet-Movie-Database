@@ -3,7 +3,7 @@ import ContentLoader from "react-content-loader"
 
 export const FilmLoading = (props) => (
   <ContentLoader 
-  className = "film film_item film_margin-bottom"  
+  className = "card card_item card_margin"  
   speed={2}
     width={220}
     height={330}

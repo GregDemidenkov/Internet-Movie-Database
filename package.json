@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "node-sass": "^7.0.1",
     "react": "^18.2.0",
+    "react-animated-css": "^1.2.1",
     "react-content-loader": "^6.2.0",
     "react-dom": "^18.2.0",
     "react-input-mask": "^2.0.4",

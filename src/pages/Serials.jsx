@@ -31,6 +31,8 @@ export const Serials = () => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+        document.title = "Сериалы"
         init()
     }, [])
 
@@ -38,7 +40,7 @@ export const Serials = () => {
     return (
         <BasePage 
             itemsList = {items}
-            page = {"serials"}
+            page = {"/serials"}
         />
     );
 }

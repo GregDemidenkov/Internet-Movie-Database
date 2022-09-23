@@ -4,14 +4,18 @@ import { Link, useNavigate } from 'react-router-dom'
 import arrComeBack from 'assets/img/come-back.svg'
 
 export const BackButton = ({
-  path,
-  children
+  children,
 }) => {
   const navigate = useNavigate()
+
+  const goBack = () => {
+    children === "Назад" ? navigate(-1) : navigate('../')
+  }
+  
   return (
-    <Link to = {path ? path : navigate(-1)} className = "come-back">
+    <div onClick={goBack} className = "come-back">
       <img src = {arrComeBack} alt="" />
       <p>{children}</p>
-    </Link>
+    </div>
   )
 }

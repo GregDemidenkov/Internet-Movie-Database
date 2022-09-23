@@ -41,6 +41,9 @@ header {
                     color: $black;
                     font-size: 28px;
                 }
+                a:hover {
+                    color: $red;
+                }
                 .active {
                     color: $red;
                 }
@@ -150,87 +153,64 @@ main {
             font-size: 36px;
             margin: 50px 0;
         }
-        &-films, &-serials {
-            overflow: hidden;
-            .film__poster {
-                height: 330px;
-            }
-            .slick-list {
-                margin: 0 30px 0 60px;
-            }
-            .slick-prev {
-                position: absolute;
-                top: calc(50% - 20px);
-                left: 0;
-                z-index: 2;
-            } 
-            .slick-next {
-                position: absolute;
-                top: calc(50% - 20px);
-                right: 18px;
-                z-index: 2;
-            }
-            .slick-prev::before, .slick-next::before {
-                font-size: 40px;
-            }
-        }
     }
     
 }
-
-.film, .serial {
-    height: 330px;
-    position: relative;
-    transition: all 0.5s ease;
-    &_item {
-        position: relative;
-        margin: 0 20px;
-        text-decoration: none;
+.slick-carousel {    
+    .slick-prev {
+        position: absolute;
+        left: 0;
+        z-index: 2;
+    } 
+    .slick-next {
+        position: absolute;
+        right: 18px;
+        z-index: 2;
     }
-    &__poster {
-        position: relative;
-        overflow: hidden;
-        transition: all 0.5s ease;
-        img {
-            width: 220px;
-            height: 100%;
-            border-radius: 10px;
-            transition: all 0.5s ease;
+    .slick-prev::before, .slick-next::before {
+        font-size: 40px;
+    }
+    .slick-slide {
+        div {
+            display: flex;
+            justify-content: center;
         }
     }
-    .info {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        bottom: 0px;
-        left: -1px;
-        opacity: 0;
-        width: 239px;
-        height: 220px;
-        background-color: $black;
-        overflow: hidden;
-        padding: 0 5px;
-        transition: all 0.5s;
-        p {
-            color: $white;
-            span {
-                font-size: 18px;
-                color: $red;
-                font-weight: 700;
+    .slick-dots {
+        li {
+            button::before {
+                color: $white;
+            }
+        }
+        .slick-active {
+            button::before {
+                color: $white;
             }
         }
     }
-    &__name {
-        padding-top: 8px;
-        color: $white;
-        width: 220px;
-        font-size: 18px;
-    }
-    &__rating {
+}
+
+.card
+{
+    overflow: hidden;
+    background: none;
+    border: none;
+    display: block !important;
+}
+
+.card_cover
+{
+    display: flex;
+    width: 220px;
+    height: 330px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+
+    .rating {
         position: absolute;
-        top: 35px;
-        left: -10px;
+        top: 10px;
+        left: 10px;
         background-color: #000000b2;
         border-radius: 100%;
         color: $white;
@@ -247,7 +227,54 @@ main {
         border: 2px solid green;
     }
 
+    .info {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around !important;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        height: 220px;
+        width: 210px;
+        background-color: $black;
+        overflow: hidden;
+        padding: 0 5px;
+        transition: all 0.5s;
+        p {
+            color: $white;
+            span {
+                font-size: 18px;
+                color: $red;
+                font-weight: 700;
+            }
+        }
+    }
+
 }
+
+.card_img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.card_cover:hover > img
+{
+    opacity: 0.5;
+    filter: blur(2px);
+}
+
+
+.card_title_word_wrap
+{
+    display: block;
+    width: 200px;
+    margin: 8px 0;
+    font-size: 18px;
+    color: $white;
+}
+
 
 .film-animation:hover {
     transform: scale(1.05);
@@ -266,8 +293,6 @@ main {
     }
 }
 
-
-
 footer {
     width: 100%;
     background-color: $gray;
@@ -281,3 +306,4 @@ footer {
         color: $light-gray;
     }
 }
+

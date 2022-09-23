@@ -5,6 +5,7 @@ main {
         display: flex;
         align-items: center;
         width: 168px;
+        cursor: pointer;
         p {
             color: $light-gray;
             font-size: 26px;
@@ -35,6 +36,7 @@ main {
                     width: 350px;
                     height: auto;
                     margin-bottom: 20px;
+                    border-radius: 8px;
                 }
             }
             &__info {
@@ -59,6 +61,8 @@ main {
                             font-size: 14px;
                             border: 1px solid $light-gray;
                             margin-left: 10px;
+                            padding: 3px 4px;
+                            border-radius: 4px;
                         }
                     }
                 }

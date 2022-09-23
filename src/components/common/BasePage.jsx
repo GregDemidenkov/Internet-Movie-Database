@@ -10,19 +10,15 @@ import { Message } from 'components/pages/base-page/Message'
 
 import { years, ratings } from 'components/pages/base-page/filters-block/filter-data-mock'
 
-import { paths } from 'routing/config'
-
 export const BasePage = ({itemsList, page}) => {
     
-    const [items, setItems] = useState(itemsList);
-    const [count, setCount] = useState(itemsList.length);
+    const [items, setItems] = useState(itemsList)
+    const [count, setCount] = useState(itemsList.length)
     const [updating, setUpdating] = useState(0)
     const [curentRating, setСurentRating] = useState("")
     const [curentGenre, setСurentGenre] = useState("")
     const [curentCountry, setСurentCountry] = useState("")
     const [curentYear, setСurentYear] = useState("")
-
-    console.log(items);
 
     useEffect(() => {
         setItems(itemsList)
@@ -135,14 +131,14 @@ export const BasePage = ({itemsList, page}) => {
 
         setUpdating(0)
         setItems(items)
-        setCount(document.getElementsByClassName("film").length)
+        setCount(document.getElementsByClassName("card").length)
     }, [updating === 1])
 
     return (
         <main>
             <div className = "main-container">
-                <BackButton path = {paths.main}>На главную</BackButton>
-                <h3>{ page === "films" ? "Фильмы" : "Сериалы" }</h3>
+                <BackButton>На главную</BackButton>
+                <h3>{ page === "/films" ? "Фильмы" : "Сериалы" }</h3>
                 <ActiveFilters 
                     curentGenre = {curentGenre}
                     curentCountry = {curentCountry}
@@ -166,9 +162,7 @@ export const BasePage = ({itemsList, page}) => {
                                 genres = {obj.genres}
                                 year = {obj.year}
                                 active = {true}
-                                page = {page} 
                             />
-
                         )
                         : Array(60).fill(0).map((_, index) => <FilmLoading key = {index}/>)
                     }

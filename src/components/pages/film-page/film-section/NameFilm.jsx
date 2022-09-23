@@ -13,7 +13,7 @@ export const NameFilm = ({
     return (
         <div className = "name">
             <h1 className = "name__ru">
-                {nameRu}
+                {`${nameRu} `}
                 ( 
                 {
                     serial 

@@ -12,10 +12,10 @@ export const FilmCart = ({
     active
 }) => {
     
-    let classNameRating = "film__rating"
+    let classNameRating = "rating"
     const filmStyle = active 
-        ? "film film_item film_margin-bottom film-animation" 
-        : "film film_item film_margin-bottom"
+        ? "card card_item card_margin film-animation" 
+        : "card card_item film-animation"
 
     const ratingColor = (rating) => {
         if (rating < 5) {
@@ -32,11 +32,11 @@ export const FilmCart = ({
     return(
         
         <Link className = {filmStyle} to = {`/filmPage/${id}`} id = {id}>
-            <div className = "film__poster">
-                <img src={poster} alt="" />
+            <div className = "card_cover">
+                <img className = "card_img" src = {poster} alt="" />
+                <p className = {classNameRating}>{rating.toFixed(1)}</p>
                 {
-                    active &&
-                    <div className="info">
+                    <div className = "info">
                         <p>
                             <span>Страны: </span>
                             {
@@ -61,9 +61,7 @@ export const FilmCart = ({
                     </div>
                 }
             </div>
-            <p className = {classNameRating}>{rating.toFixed(1)}</p>
-            <p className = "film__name">{name}</p>
+            <p className = "card_title_word_wrap">{name}</p>
         </Link>
-
     )
 }

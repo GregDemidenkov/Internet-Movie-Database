@@ -1,9 +1,8 @@
 import React,  {useState, useEffect} from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { FilmSection } from 'components/pages/film-page/FilmSection'
 import { BackButton } from 'components/common/BackButton'
-import { paths } from 'routing/config'
 
 import { fetchClient } from 'api/fetchClient'
 
@@ -34,14 +33,26 @@ export const FilmPage = () => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+        document.title = "Страница фильма"
         init()
     }, [])
+
+    useEffect(() => {
+        document.title = `${filmCart.nameRu}
+        (${filmCart.serial 
+            ? filmCart.year + "-" + 
+                (filmCart.endYear === null 
+                ? "..." 
+                : filmCart.endYear)
+            : filmCart.year})`
+    }, [fetching === true])
 
     return (
         <>
             <main>
                 <div name = "top" className = "main-container">
-                    <BackButton path = {filmCart.serial ? "/" + paths.serials : "/" + paths.films}>Назад</BackButton>
+                    <BackButton>Назад</BackButton>
                     <h3>
                         {
                             filmCart.serial === "serials" 

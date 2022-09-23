@@ -31,13 +31,15 @@ export const Films = () => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+        document.title = "Фильмы"
         init()
     }, [])
 
     return (
         <BasePage 
             itemsList = {items}
-            page = {"films"}
+            page = {"/films"}
         />
     );
     

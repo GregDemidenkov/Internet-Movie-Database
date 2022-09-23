@@ -120,19 +120,10 @@ main {
     .films-list, .serials-list{
         display: flex;
         justify-content: space-around;
-        align-items: center;
         flex-wrap: wrap;
-        .film, .serial {
-            padding-right: 6px;
-            &__rating {
-                top: 5px;
-                left: 5px;
-            }
-            &__name {
-                width: 220px;
-            }
-            &_margin-bottom, &_margin-bottom {
-                margin-bottom: 150px;
+        .card, .serial {
+            &_margin, &_margin {
+                margin: 0 20px 70px;
             }
         }
     }
