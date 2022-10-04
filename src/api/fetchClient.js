@@ -1,9 +1,16 @@
 import { esscenseList } from "./requests";
-import { headers } from "./apiClient";
+import { headers } from "./config";
+
+const enumFetches = {
+    filmsPage: "FILMS_PAGE",
+    serialsPage: "SERIALS_PAGE",
+    mainPage: "MAIN_PAGE",
+    filmPage: "FILM_PAGE"
+}
 
 export const fetchClient = (type, id) => {
     switch (type) {
-        case "FILMS_PAGE": {
+        case enumFetches.filmsPage: {
             const params = {
                 'order': "NUM_VOTE",
                 'type': "FILM",
@@ -23,7 +30,7 @@ export const fetchClient = (type, id) => {
                 }),
             ];
         }
-        case "SERIALS_PAGE": {
+        case enumFetches.serialsPage: {
             const params = {
                 'order': "NUM_VOTE",
                 'type': "TV_SERIES",
@@ -43,7 +50,7 @@ export const fetchClient = (type, id) => {
                 }),
             ];
         }
-        case "MAIN_PAGE": {
+        case enumFetches.mainPage: {
             const paramsFilms = {
                 'order': "RATING",
                 'type': "FILM",
@@ -67,7 +74,7 @@ export const fetchClient = (type, id) => {
                 }),
             ];
         }
-        case "FILM_PAGE": {
+        case enumFetches.filmPage: {
             const params = {
                 'type': "STILL",
             }

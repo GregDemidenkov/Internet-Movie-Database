@@ -56,3 +56,10 @@ export const genres = [
     { id: 1, label: "Семейный" },
     { id: 1, label: "Мультфильм" }
 ]
+
+export const filtersList = [
+    {id: 1, filterName: "genre", filterList: genres, label: "Жанры"},
+    {id: 1, filterName: "year", filterList: years, label: "Годы"},
+    {id: 1, filterName: "country", filterList: countries, label: "Страны"},
+    {id: 1, filterName: "rating", filterList: ratings, label: "Оценки"}
+]

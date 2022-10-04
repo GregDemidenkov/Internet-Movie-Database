@@ -9,6 +9,7 @@ import { FilmLoading } from 'components/common/FilmLoading'
 import { Message } from 'components/pages/base-page/Message'
 
 import { years, ratings } from 'components/pages/base-page/filters-block/filter-data-mock'
+import { paths } from 'routing/config'
 
 export const BasePage = ({itemsList, page}) => {
     
@@ -90,7 +91,7 @@ export const BasePage = ({itemsList, page}) => {
                         flag = true
                     }
                 })
-                if (flag == false) {
+                if (flag === false) {
                     obj.status = "nonActive"
                 }
             }
@@ -138,7 +139,7 @@ export const BasePage = ({itemsList, page}) => {
         <main>
             <div className = "main-container">
                 <BackButton>На главную</BackButton>
-                <h3>{ page === "/films" ? "Фильмы" : "Сериалы" }</h3>
+                <h3>{ page === paths.films ? "Фильмы" : "Сериалы" }</h3>
                 <ActiveFilters 
                     curentGenre = {curentGenre}
                     curentCountry = {curentCountry}
@@ -146,7 +147,10 @@ export const BasePage = ({itemsList, page}) => {
                     curentRating = {curentRating}
                     updateDataByFilter = {updateDataByFilter}
                 />
-                <Filters updateData = {updateDataByFilter} key = "filters_block"/>
+                {
+                    itemsList.length > 0 &&
+                    <Filters updateData = {updateDataByFilter} key = "filters_block"/>
+                }
                 <div className = "films-list">
                     {
                         items.length != 0 ?
@@ -161,7 +165,7 @@ export const BasePage = ({itemsList, page}) => {
                                 countries = {obj.countries} 
                                 genres = {obj.genres}
                                 year = {obj.year}
-                                active = {true}
+                                active
                             />
                         )
                         : Array(60).fill(0).map((_, index) => <FilmLoading key = {index}/>)

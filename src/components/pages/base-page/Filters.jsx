@@ -1,20 +1,21 @@
 import React from 'react'
 
-import { Genre } from './filters-block/Genre'
-import { Year } from './filters-block/Year'
-import { Country } from './filters-block/Country'
-import { Rating } from './filters-block/Rating'
+import { filtersList } from './filters-block/filter-data-mock'
 
+import { FilterDropdown } from './filters-block/FilterDropdown'
 
 export const Filters = ({updateData}) => {
-
     return (
-        
         <div className="filters">
-            <Genre updateData = {updateData} />
-            <Year updateData = {updateData}  />
-            <Country updateData = {updateData}  />
-            <Rating updateData = {updateData}  />
+            {
+                filtersList.map((obj) => (
+                    <FilterDropdown 
+                        key = {obj.id}
+                        updateData = {updateData}
+                        filterInfo = {obj}
+                    />
+                ))
+            }
         </div>
 
     )

@@ -1,12 +1,14 @@
-import React,  {useState, useEffect} from 'react'
+import React from 'react'
 
-import {countries} from './filter-data-mock'
+export const FilterDropdown = ({
+    updateData,
+    filterInfo
+}) => {
 
-export const Country = ({updateData}) => {
     return (
-        <div className = "filters__country dropdown-menu">
+        <div className = {"filters__" + filterInfo.filterName + " dropdown-menu"}>
             <button className = "filters__button country__button " type = "button">
-                <p>Страны</p>
+                <p>{filterInfo.label}</p>
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                 width="24.000000pt" height="24.000000pt" viewBox="0 0 24.000000 24.000000"
                 preserveAspectRatio="xMidYMid meet">
@@ -18,10 +20,10 @@ export const Country = ({updateData}) => {
                 </g>
                 </svg>
             </button>
-            <ul className = "dropdown-content country-dropdown">
+            <ul className = {"dropdown-content " + filterInfo.filterName + "-dropdown"}>
                 {
-                    countries.map(obj => 
-                        <li key = {obj.label} className = "dropdown-item" onClick = {() => {updateData({key: "country", value: obj.label})}}>
+                    filterInfo.filterList.map(obj => 
+                        <li key = {obj.label} className = "dropdown-item" onClick = {() => {updateData({key: filterInfo.filterName, value: obj.label})}}>
                             <p>{obj.label}</p>
                         </li>
                     )
